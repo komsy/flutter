@@ -1,5 +1,5 @@
 
-class TSizes {
+class MSizes {
   // Padding and margin sizes
   static const double xs = 4.0;
   static const double sm = 8.0;
@@ -44,7 +44,7 @@ class TSizes {
   static const double dividerHeight = 1.0;
 
   // Product item dimensions
-  static const double productImageSize = 120.0;
+  static const double producMImagesize = 120.0;
   static const double productImageRadius = 16.0;
   static const double productItemHeight = 160.0;
 

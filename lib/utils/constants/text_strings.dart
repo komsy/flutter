@@ -1,6 +1,6 @@
 
 /// This class contains all the App Text in String formats.
-class TTexts {
+class MTexts {
 
   // -- GLOBAL Texts
   static const String and = "and";
@@ -8,7 +8,7 @@ class TTexts {
   static const String done = "Done";
   static const String submit = "Submit";
   static const String appName = "T-Store";
-  static const String tContinue = "Continue";
+  static const String mContinue = "Continue";
 
 
   // -- OnBoarding Texts
@@ -63,7 +63,7 @@ class TTexts {
 
   // -- Home
   static const String homeAppbarTitle = "Good day for shopping";
-  static const String homeAppbarSubTitle = "Taimoor Sikander";
+  static const String homeAppbarSubTitle = "Morris Koome";
 
 
 }
