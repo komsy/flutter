@@ -7,7 +7,7 @@ class MTexts {
   static const String skip = "Skip";
   static const String done = "Done";
   static const String submit = "Submit";
-  static const String appName = "T-Store";
+  static const String appName = "M-Store";
   static const String mContinue = "Continue";
 
 

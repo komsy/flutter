@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:k_store/features/authentication/screens/onboarding/onboarding.dart';
+import 'package:k_store/bindings/general_bindings.dart';
 import 'package:k_store/utils/constants/colors.dart';
 import 'package:k_store/utils/constants/text_strings.dart';
 import 'package:k_store/utils/theme/theme.dart';
@@ -16,7 +16,7 @@ class App extends StatelessWidget {
       theme: MAppTheme.lightTheme,
       darkTheme: MAppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
-      // initialBinding: GeneralBindings(),
+      initialBinding: GeneralBindings(), //Initiate Nretwork Manger
 
       //Show loader or circular progress indicator meanwhile authentication repository is decidding to show relevant screen
       home: const Scaffold(backgroundColor: MColors.primary,body: Center(child: CircularProgressIndicator(color: Colors.white))),
