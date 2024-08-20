@@ -4,6 +4,8 @@ import 'package:k_store/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:k_store/utils/constants/colors.dart';
 import 'package:k_store/utils/constants/text_strings.dart';
 
+import '../../../../../data/repositories/authentication/authentication_repository.dart';
+
 class MHomeAppBar extends StatelessWidget {
   const MHomeAppBar({
     super.key,
@@ -20,7 +22,7 @@ class MHomeAppBar extends StatelessWidget {
         ],
       ),
       actions: [
-         MCartCounterIcon(iconColor: MColors.white,onPressed: () {},)
+         MCartCounterIcon(iconColor: MColors.white,onPressed: () =>AuthenticationRepository.instance.logout(),)
       ],
     );
   }

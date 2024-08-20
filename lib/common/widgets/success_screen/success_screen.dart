@@ -5,6 +5,7 @@ import 'package:k_store/features/authentication/screens/login/login.dart';
 import 'package:k_store/utils/constants/sizes.dart';
 import 'package:k_store/utils/constants/text_strings.dart';
 import 'package:k_store/utils/helpers/helper_functions.dart';
+import 'package:lottie/lottie.dart';
 
 class SuccessScreen extends StatelessWidget {
   const SuccessScreen({super.key, this.image, this.title, this.subtitle, required this.onPressed});
@@ -20,7 +21,8 @@ class SuccessScreen extends StatelessWidget {
           child: Column(
             children: [
               //Image
-              Image(image:  AssetImage(image), width: THelperFunctions.screenWidth()* 0.6,),
+              Lottie.asset(image, width: THelperFunctions.screenWidth() * 0.6),
+              // Image(image:  AssetImage(image), width: THelperFunctions.screenWidth()* 0.6,),
               const SizedBox(height: MSizes.spaceBtwSections),
 
               //Title & SUbtitle
