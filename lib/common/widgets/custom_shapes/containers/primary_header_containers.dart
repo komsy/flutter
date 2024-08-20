@@ -14,9 +14,9 @@ class MPrimaryHeaderContainer extends StatelessWidget {
     return MCurvedEdgeWidget(
      child: Container(
        color: MColors.primary,
-       padding: const EdgeInsets.all(0),
-       child: SizedBox(
-         height: 400,
+      //  padding: const EdgeInsets.all(0),
+      //  child: SizedBox(
+      //    height: 400,
          child: Stack(
            children: [
              Positioned(top: -150, right: -250, child: MCircularContainer(backgroundColor: MColors.textWhite.withOpacity(0.1))),
@@ -25,7 +25,7 @@ class MPrimaryHeaderContainer extends StatelessWidget {
            ],
          ),
        ),
-     ),
+    //  ),
     );
   }
 }
