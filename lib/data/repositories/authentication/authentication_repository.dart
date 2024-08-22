@@ -4,6 +4,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:k_store/data/repositories/user/user_repository.dart';
 import 'package:k_store/features/authentication/screens/login/login.dart';
 import 'package:k_store/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:k_store/features/authentication/screens/sigup/verify_email.dart';
@@ -20,6 +21,9 @@ class AuthenticationRepository extends GetxController{
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
   // final GoogleSignIn googleSignIn = GoogleSignIn(); 
+
+  //Get Authenticated user data
+  User? get authUser =>_auth.currentUser;
 
   //Called from amin.dart on app launch
   @override
@@ -145,13 +149,53 @@ class AuthenticationRepository extends GetxController{
       }
     }
 
-  //ReAuthenticate - ReAuthenticate User
 
 
   //EmailAuthentication - Forget Pasword
 
+
+  //ReAuthenticate - ReAuthenticate User
+  Future<void> reAuthenticateEmailAndPassword (String email, String password) async {
+    try{
+      // Create a credential
+      AuthCredential credential = EmailAuthProvider.credential(email: email, password: password);
+      
+      //ReAuthenticate
+      await _auth.currentUser!.reauthenticateWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      throw MFirebaseAuthException(e.code).message;
+    }on FirebaseException catch (e) {
+      throw MFirebaseException(e.code).message;
+    }on FormatException catch (_) {
+      throw const MFormatException();
+    } on PlatformException catch (e){
+      throw MPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  //Delete user - Remove user auth and firestore account
+  Future<void> deleteAccount () async {
+    try{
+      await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
+      await _auth.currentUser!.delete();
+      
+    } on FirebaseAuthException catch (e) {
+      throw MFirebaseAuthException(e.code).message;
+    }on FirebaseException catch (e) {
+      throw MFirebaseException(e.code).message;
+    }on FormatException catch (_) {
+      throw const MFormatException();
+    } on PlatformException catch (e){
+      throw MPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
   //Logout user
-    Future<void> logout () async {
+  Future<void> logout () async {
     try{
       // Sign out with google
       await GoogleSignIn().signOut();
@@ -170,4 +214,6 @@ class AuthenticationRepository extends GetxController{
       throw 'Something went wrong. Please try again';
     }
   }
+
+
 }

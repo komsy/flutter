@@ -2,13 +2,13 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:k_store/common/widgets/images/m_circular_image.dart';
 
 import '../../../../../../common/widgets/icons/t_circular_icon.dart';
-import '../../../../../../common/widgets/images/t_circular_image.dart';
 import '../../../../../../utils/constants/enums.dart';
 import 'package:k_store/utils/constants/colors.dart';
 import 'package:k_store/utils/constants/sizes.dart';
-import 't_rounded_image.dart';
+import 'm_rounded_image.dart';
 
 /// Widget for uploading images with optional editing functionality
 class TImageUploader extends StatelessWidget {
@@ -70,7 +70,7 @@ class TImageUploader extends StatelessWidget {
       children: [
         // Display the image in either circular or rounded shape
         circular
-            ? TCircularImage(
+            ? MCircularImage(
                 image: image,
                 width: width,
                 height: height,
@@ -78,7 +78,7 @@ class TImageUploader extends StatelessWidget {
                 memoryImage: memoryImage,
                 backgroundColor: MColors.primaryBackground,
               )
-            : TRoundedImage(
+            : MRoundedImage(
                 image: image,
                 width: width,
                 height: height,

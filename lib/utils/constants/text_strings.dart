@@ -32,6 +32,7 @@ class MTexts {
   static const String rememberMe = "Remember Me";
   static const String forgetPassword = "Forget Password?";
   static const String signIn = "Sign In";
+  static const String verify = "Verify";
   static const String createAccount = "Create Account";
   static const String orSignInWith = "or sign in with";
   static const String orSignUpWith = "or sign up with";
@@ -44,6 +45,18 @@ class MTexts {
 
 
   // -- Authentication Headings
+  static const String profileTitle = "Profile";
+  static const String profileSubTitle = "Change Profile Picture";
+  static const String profileSectionHeading1 = "Profile Information";
+  static const String profileSectionHeading2 = "Personal Information";
+  static const String profileCloseAccount = "Close Account";
+  static const String deleteButton = "Delete";
+  static const String changeNameTitle= "Change Name";
+  static const String reAuthenticate = "Re-Authenticate User";
+  static const String deleteButtonCancel = "Cancel";
+  static const String deleteAccTitle = "Delete Account";
+  static const String deleteAccMiddletext = "Are you sure you want to delete your account permanently? This action is not reversible and all of your data will be removed permanently.";
+  static const String changeNameSubTitle = "Use real name for easy verification. This name will appear on several pages.";
   static const String loginTitle = "Welcome back,";
   static const String loginSubTitle = "Discover Limitless Choices and Unmatched Convenience.";
   static const String signupTitle = "Let’s create your account";
@@ -63,7 +76,7 @@ class MTexts {
 
   // -- Home
   static const String homeAppbarTitle = "Good day for shopping";
-  static const String homeAppbarSubTitle = "Morris Koome";
+  static const String homeAppbarSubTitle = "Multitech Solutions";
 
 
 }

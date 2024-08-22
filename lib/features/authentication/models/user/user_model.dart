@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:k_store/utils/formatters/formatter.dart';
 
 class UserModel {
@@ -56,19 +57,21 @@ class UserModel {
   }
 
   //factory method to create a usermodel from firebase document snapshot.
-  // factory UserModel.fromSnapshot(DocumentSnapshot<Map<String,dynamic>> document){
-  //   if (document.data() != null){
-  //     final data = document.data()!;
-  //     return UserModel(
-  //     id : document.id,
-  //     firstName: data['FirstName'] ?? '',
-  //     lastName: data['LastName'] ?? '',
-  //     userName: data['userName'] ?? '',
-  //     email: data['Email'] ?? '',
-  //     phoneNumber: data['PhoneNumber'] ?? '',
-  //     profilePicture: data['ProfilePicture'] ?? '',
-  //     )
-  //   }
-  // }
+  factory UserModel.fromSnapshot(DocumentSnapshot<Map<String,dynamic>> document){
+    if (document.data() != null){
+      final data = document.data()!;
+      return UserModel(
+      id : document.id,
+      firstName: data['Firstname'] ?? '',
+      lastName: data['Lastname'] ?? '',
+      userName: data['UserName'] ?? '',
+      email: data['Email'] ?? '',
+      phoneNumber: data['PhoneNumber'] ?? '',
+      profilePicture: data['ProfilePicture'] ?? '',
+      );
+    } else {
+      return UserModel.empty();
+    }
+  }
 
 }
