@@ -4,14 +4,14 @@ import 'package:k_store/utils/constants/colors.dart';
 import 'package:k_store/utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_functions.dart';
 
-class TCircularIcon extends StatelessWidget {
+class MCircularIcon extends StatelessWidget {
   /// A custom Circular Icon widget with a background color.
   ///
   /// Properties are:
   /// Container [width], [height], & [backgroundColor].
   ///
   /// Icon's [size], [color] & [onPressed]
-  const TCircularIcon({
+  const MCircularIcon({
     super.key,
     required this.icon,
     this.width,

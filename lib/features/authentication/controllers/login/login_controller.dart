@@ -54,7 +54,7 @@ class LoginController extends GetxController{
       }
 
       //Login User in the Firebase Authentication & save user data in the Firebase
-      final userCredential = await AuthenticationRepository.instance.loginWithEmailAndPassword(email.text.trim(), password.text.trim());
+      await AuthenticationRepository.instance.loginWithEmailAndPassword(email.text.trim(), password.text.trim());
 
       //Remove loader
       MFullScreenLoader.stopLoading();

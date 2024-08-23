@@ -3,6 +3,7 @@
 class MTexts {
 
   // -- GLOBAL Texts
+  static const String currency = "Kes";
   static const String and = "and";
   static const String skip = "Skip";
   static const String done = "Done";
@@ -33,6 +34,7 @@ class MTexts {
   static const String forgetPassword = "Forget Password?";
   static const String signIn = "Sign In";
   static const String verify = "Verify";
+  static const String changeName = "Change Name";
   static const String createAccount = "Create Account";
   static const String orSignInWith = "or sign in with";
   static const String orSignUpWith = "or sign up with";

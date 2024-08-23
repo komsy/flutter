@@ -61,7 +61,7 @@ class ChangeName extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                   onPressed: ()=> controller.updateUserName(),
-                  child: const Text(MTexts.createAccount))),
+                  child: const Text(MTexts.changeName))),
           ],
         ),
       ),

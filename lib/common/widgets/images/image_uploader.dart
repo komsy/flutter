@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:k_store/common/widgets/images/m_circular_image.dart';
 
-import '../../../../../../common/widgets/icons/t_circular_icon.dart';
 import '../../../../../../utils/constants/enums.dart';
 import 'package:k_store/utils/constants/colors.dart';
 import 'package:k_store/utils/constants/sizes.dart';
+import '../icons/m_circular_icon.dart';
 import 'm_rounded_image.dart';
 
 /// Widget for uploading images with optional editing functionality
@@ -92,7 +92,7 @@ class TImageUploader extends StatelessWidget {
           left: left,
           right: right,
           bottom: bottom,
-          child: TCircularIcon(
+          child: MCircularIcon(
             icon: icon,
             size: MSizes.md,
             color: Colors.white,
