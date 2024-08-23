@@ -10,6 +10,7 @@ import 'package:k_store/utils/constants/sizes.dart';
 import 'package:k_store/utils/helpers/helper_functions.dart';
 
 import '../../icons/m_circular_icon.dart';
+import '../../texts/m_brand_title_text_with_verified_icon.dart';
 import '../../texts/product_price_text.dart';
 import '../../texts/product_title_text.dart';
 
@@ -66,20 +67,14 @@ class MProductCardVertical extends StatelessWidget {
             const SizedBox(height: MSizes.spaceBtwItems /2),
       
             //product Details
-            Padding(
-              padding: const EdgeInsets.only(left: MSizes.sm),
+            const Padding(
+              padding: EdgeInsets.only(left: MSizes.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const MProductTitletext(title: 'Green Nike Air Shoes', smallSize: true,),
-                  const SizedBox(height: MSizes.spaceBtwItems /2),
-                  Row(
-                    children: [
-                      Text('Nike', overflow: TextOverflow.ellipsis, maxLines: 1, style: Theme.of(context).textTheme.labelMedium),
-                      const SizedBox(height: MSizes.xs),
-                      const Icon(Iconsax.verify5, color: MColors.primary,size: MSizes.iconXs,)
-                    ]
-                  ),
+                  MProductTitletext(title: 'Green Nike Air Shoes', smallSize: true,),
+                  SizedBox(height: MSizes.spaceBtwItems /2),
+                  MBrandTitleTextWithVerifiedIcon(title: 'Nike',),
                  
                 ],
               ),
