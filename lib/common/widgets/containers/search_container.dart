@@ -32,7 +32,7 @@ class MSearchContainer extends StatelessWidget {
       child: Padding(
         padding: padding,
         child: Container(
-          width: TDeviceUtils.getScreenWidth(context),
+          width: MDeviceUtils.getScreenWidth(context),
           padding: const EdgeInsets.all(MSizes.md),
           decoration: BoxDecoration(
             color: showBackground ? dark ? MColors.dark : MColors.white : Colors.transparent,

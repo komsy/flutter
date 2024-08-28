@@ -68,25 +68,29 @@ class MProductCardVertical extends StatelessWidget {
       
             //product Details
             const Padding(
-              padding: EdgeInsets.only(left: MSizes.sm),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  MProductTitletext(title: 'Green Nike Air Shoes', smallSize: true,),
-                  SizedBox(height: MSizes.spaceBtwItems /2),
-                  MBrandTitleTextWithVerifiedIcon(title: 'Nike',),
-                 
-                ],
+              padding: EdgeInsets.symmetric(horizontal: MSizes.sm),
+              //Only reason to use Sized box is to make column full width
+              child: SizedBox(
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    MProductTitletext(title: 'Green Nike Air Shoes', smallSize: true,),
+                    SizedBox(height: MSizes.spaceBtwItems /2),
+                    MBrandTitleTextWithVerifiedIcon(title: 'Nike',),
+                  ],
+                ),
               ),
             ),
             const Spacer(),
+            
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 // Price
                 const Padding(
                   padding: EdgeInsets.only(left: MSizes.sm),
-                  child: MProductPriceText(price: '3500.00'),
+                  child: MProductPriceText(price: ' 3500.00'),
                 ),
 
                 //Add to cart button

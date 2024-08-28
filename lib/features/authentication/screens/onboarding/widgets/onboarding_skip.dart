@@ -11,7 +11,7 @@ class OnBoardingskip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top:TDeviceUtils.getAppBarHeight(),
+      top:MDeviceUtils.getAppBarHeight(),
       right:MSizes.defaultSpace,
       child: TextButton(
         onPressed: () =>OnBoardingController.instance.skipPage(),

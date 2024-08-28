@@ -7,7 +7,12 @@ import '../../../utils/constants/sizes.dart';
 
 class MVerticalImagetext extends StatelessWidget {
   const MVerticalImagetext({
-    super.key, required this.image, required this.title, this.textColor=MColors.white, this.backgroundColor=MColors.white, this.onTap,
+    super.key,
+    required this.image,
+    required this.title,
+    this.textColor = MColors.white,
+    this.backgroundColor,
+    this.onTap,
   });
 
   final String image,title;

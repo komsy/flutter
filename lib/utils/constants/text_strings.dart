@@ -3,7 +3,7 @@
 class MTexts {
 
   // -- GLOBAL Texts
-  static const String currency = "Kes";
+  static const String currency = "Ksh";
   static const String and = "and";
   static const String skip = "Skip";
   static const String done = "Done";

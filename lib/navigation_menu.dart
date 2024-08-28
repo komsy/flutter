@@ -4,6 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:k_store/features/personalization/views/settings/settings.dart';
 import 'package:k_store/features/shop/screens/home/home.dart';
 import 'package:k_store/features/shop/screens/store/store.dart';
+import 'package:k_store/features/shop/screens/wishlist/wishlist.dart';
 import 'package:k_store/utils/constants/colors.dart';
 import 'package:k_store/utils/helpers/helper_functions.dart';
 
@@ -44,6 +45,6 @@ class NavigationController extends GetxController {
   final screens= [
     const HomeSreen() ,
     const StoreScreen(),
-    Container(color: Colors.orange),
+    const FavouriteScreen(),
     const SetttingsScreen()];
 }
