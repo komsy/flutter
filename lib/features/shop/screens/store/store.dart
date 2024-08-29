@@ -6,11 +6,9 @@ import 'package:k_store/common/widgets/layouts/grid_layout.dart';
 import 'package:k_store/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:k_store/common/widgets/texts/section_heading.dart';
 import 'package:k_store/features/shop/screens/store/widgets/category.dart';
-import 'package:k_store/utils/constants/image_strings.dart';
 import 'package:k_store/utils/constants/sizes.dart';
 import 'package:k_store/utils/helpers/helper_functions.dart';
 
-import '../../../../common/widgets/brands/brand_show_case.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../common/widgets/brands/brand_card.dart';
 

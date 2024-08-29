@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:k_store/common/widgets/custom_shapes/containers/circular_container.dart';
 import 'package:k_store/utils/constants/enums.dart';
 
-import '../../../../../common/widgets/image_text_widgets/m_rounded_image.dart';
 import '../../../../../common/widgets/images/m_rounded_image.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
