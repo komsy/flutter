@@ -3,8 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:k_store/utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
 
-class MRoundedImage extends StatelessWidget {
-  const MRoundedImage({
+class MRoundedImage1 extends StatelessWidget {
+  const MRoundedImage1({
     super.key,
     this.width,
     this.height,
