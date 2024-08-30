@@ -4,10 +4,9 @@ import 'package:k_store/common/widgets/appbar/appbar.dart';
 import 'package:k_store/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:k_store/common/widgets/shimmers/shimmer.dart';
 import 'package:k_store/features/personalization/controllers/user_controllers.dart';
+import 'package:k_store/features/shop/screens/cart/cart.dart';
 import 'package:k_store/utils/constants/colors.dart';
 import 'package:k_store/utils/constants/text_strings.dart';
-
-import '../../../../../data/repositories/authentication/authentication_repository.dart';
 
 class MHomeAppBar extends StatelessWidget {
   const MHomeAppBar({
@@ -34,7 +33,7 @@ class MHomeAppBar extends StatelessWidget {
         ],
       ),
       actions: [
-         MCartCounterIcon(iconColor: MColors.white,onPressed: () =>AuthenticationRepository.instance.logout(),)
+         MCartCounterIcon(iconColor: MColors.white,onPressed: () => Get.to(() =>const CartScreen()))
       ],
     );
   }

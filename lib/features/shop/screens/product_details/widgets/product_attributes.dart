@@ -38,7 +38,7 @@ class MProductAttributes extends StatelessWidget {
                           const MProductTitletext(title: 'Price: ', smallSize: true),
                           const SizedBox(width: MSizes.spaceBtwItems / 2),
                           //Actual Price
-                          Text('${MTexts.currency} 25', style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough)),
+                          Text('${MTexts.currency}25', style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough)),
                           const SizedBox(width: MSizes.spaceBtwItems),
                           //Sale Price
                           const MProductPriceText(price: '20')

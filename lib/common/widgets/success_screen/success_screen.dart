@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:k_store/common/styles/spacing_styles.dart';
-import 'package:k_store/features/authentication/screens/login/login.dart';
 import 'package:k_store/utils/constants/sizes.dart';
 import 'package:k_store/utils/constants/text_strings.dart';
 import 'package:k_store/utils/helpers/helper_functions.dart';
 import 'package:lottie/lottie.dart';
 
 class SuccessScreen extends StatelessWidget {
-  const SuccessScreen({super.key, this.image, this.title, this.subtitle, required this.onPressed});
+  const SuccessScreen({super.key, required this.image, required this.title, required this.subtitle, required this.onPressed});
 
-  final image,title,subtitle;
+  final String  image,title,subtitle;
   final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
@@ -21,8 +19,8 @@ class SuccessScreen extends StatelessWidget {
           child: Column(
             children: [
               //Image
-              Lottie.asset(image, width: THelperFunctions.screenWidth() * 0.6),
-              // Image(image:  AssetImage(image), width: THelperFunctions.screenWidth()* 0.6,),
+              // Lottie.asset(image, width: THelperFunctions.screenWidth() * 0.6),
+              Image(image:  AssetImage(image), width: THelperFunctions.screenWidth()* 0.6,),
               const SizedBox(height: MSizes.spaceBtwSections),
 
               //Title & SUbtitle
@@ -32,7 +30,8 @@ class SuccessScreen extends StatelessWidget {
               const SizedBox(height: MSizes.spaceBtwItems),
 
               //Buttons
-              SizedBox(width: double.infinity, child: ElevatedButton(onPressed: ()=> Get.to(()=> const LoginScreen()), child: const Text(MTexts.mContinue))),
+              // SizedBox(width: double.infinity, child: ElevatedButton(onPressed: ()=> Get.to(()=> const LoginScreen()), child: const Text(MTexts.mContinue))),
+              SizedBox(width: double.infinity, child: ElevatedButton(onPressed: onPressed, child: const Text(MTexts.mContinue))),
 
             ],),
         ),
