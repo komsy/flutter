@@ -6,6 +6,7 @@ import 'package:k_store/common/widgets/custom_shapes/containers/primary_header_c
 import 'package:k_store/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:k_store/common/widgets/texts/section_heading.dart';
 import 'package:k_store/features/personalization/views/address/address.dart';
+import 'package:k_store/features/shop/screens/order/Order.dart';
 import 'package:k_store/utils/constants/colors.dart';
 import 'package:k_store/utils/constants/sizes.dart';
 
@@ -45,7 +46,8 @@ class SetttingsScreen extends StatelessWidget {
                 const SizedBox(height: MSizes.spaceBtwItems),
 
                 MSettingsMenuTile(icon: Iconsax.safe_home, title: "My Addresses", subTitle: "Set shopping delivery address", onTap: () => Get.to(() => const UserAddressScreen())),
-                MSettingsMenuTile(icon: Iconsax.safe_home, title: "My Cart", subTitle: "Add, remove products", onTap: () {}),
+                MSettingsMenuTile(icon: Iconsax.shopping_cart, title: "My Cart", subTitle: "Add, remove products", onTap: () {}),
+                MSettingsMenuTile(icon: Iconsax.bag_tick, title: "My Orders", subTitle: "In-progress and Completed Orders", onTap: () => Get.to(() => const OrderScreen())),
 
                 //App Setting
                 const SizedBox(height: MSizes.spaceBtwSections),
