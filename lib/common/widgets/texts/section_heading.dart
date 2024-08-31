@@ -6,11 +6,17 @@ class MSectionHeading extends StatelessWidget {
     this.textColor,
     required this.title,
     this.rightSideWidget,
+    this.buttonTitle = 'View all',
+    this.onPressed,
+    this.showActionButton=true,
   });
 
   final Color? textColor;
   final Widget? rightSideWidget;
-  final String title;
+  final String title, buttonTitle;
+
+  final bool showActionButton;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +27,8 @@ class MSectionHeading extends StatelessWidget {
             style: Theme.of(context).textTheme.headlineSmall!.apply(color: textColor),
             maxLines: 1,
             overflow: TextOverflow.ellipsis),
-        if (rightSideWidget!= null) rightSideWidget!
+        // if (rightSideWidget!= null) rightSideWidget!
+        if(showActionButton) TextButton(onPressed: onPressed, child: Text(buttonTitle))
       ],
     );
   }

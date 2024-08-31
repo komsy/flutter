@@ -11,7 +11,6 @@ import 'package:k_store/utils/helpers/helper_functions.dart';
 
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
-import '../../../styles/shadows.dart';
 import '../../icons/m_circular_icon.dart';
 
 class MProductCardHorizontal extends StatelessWidget {

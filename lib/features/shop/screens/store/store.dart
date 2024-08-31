@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:k_store/common/widgets/appbar/appbar.dart';
 import 'package:k_store/common/widgets/appbar/tabbar.dart';
 import 'package:k_store/common/widgets/containers/search_container.dart';
 import 'package:k_store/common/widgets/layouts/grid_layout.dart';
 import 'package:k_store/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:k_store/common/widgets/texts/section_heading.dart';
+import 'package:k_store/features/shop/screens/brand/all_brands.dart';
 import 'package:k_store/features/shop/screens/store/widgets/category.dart';
 import 'package:k_store/utils/constants/sizes.dart';
 import 'package:k_store/utils/helpers/helper_functions.dart';
@@ -49,7 +51,7 @@ class StoreScreen extends StatelessWidget {
                     const SizedBox(height: MSizes.spaceBtwSections),
       
                     //Featured brands
-                    const MSectionHeading(title: "Featured Brands"),
+                    MSectionHeading(title: "Featured Brands",onPressed: () => Get.to(() => const AllBrandsScreen())),
                     const SizedBox(height: MSizes.spaceBtwItems / 1.5),
       
                     MGridLayout(

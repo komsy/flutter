@@ -46,7 +46,7 @@ class ProductDetailScreen extends StatelessWidget {
                 const SizedBox(height: MSizes.spaceBtwSections),
 
                 //Description
-                const MSectionHeading(title: 'Description'),
+                const MSectionHeading(title: 'Description',showActionButton: false),
                 const SizedBox(height: MSizes.spaceBtwItems),
                 const ReadMoreText(
                   'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
@@ -64,7 +64,7 @@ class ProductDetailScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const MSectionHeading(title: 'Reviews (199)'),
+                    const MSectionHeading(title: 'Reviews (199)',showActionButton: false),
                     IconButton(onPressed: () => Get.to(() => const ProductReviewsScreen()), icon: const Icon(Iconsax.arrow_right_3, size: 18)),
                   ],
                 ),

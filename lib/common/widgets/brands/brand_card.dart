@@ -18,7 +18,7 @@ class MBrandCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: MRoundedContainer(
         padding: const EdgeInsets.all(MSizes.sm),
         showBorder: true,
