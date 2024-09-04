@@ -5,6 +5,8 @@ import 'package:k_store/utils/constants/colors.dart';
 import 'package:k_store/utils/constants/text_strings.dart';
 import 'package:k_store/utils/theme/theme.dart';
 
+import 'routes/app_routes.dart';
+
 class App extends StatelessWidget {
   const App({super.key});
 
@@ -17,6 +19,7 @@ class App extends StatelessWidget {
       darkTheme: MAppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
       initialBinding: GeneralBindings(), //Initiate Nretwork Manger
+      getPages: AppRoutes.pages,
 
       //Show loader or circular progress indicator meanwhile authentication repository is decidding to show relevant screen
       home: const Scaffold(backgroundColor: MColors.primary,body: Center(child: CircularProgressIndicator(color: Colors.white))),

@@ -7,8 +7,8 @@ import 'package:k_store/utils/constants/text_strings.dart';
 
 import '../../../../utils/validators/validation.dart';
 
-class ForgotPassword extends StatelessWidget {
-  const ForgotPassword({super.key});
+class ForgetPassword extends StatelessWidget {
+  const ForgetPassword({super.key});
 
   @override
   Widget build(BuildContext context) {

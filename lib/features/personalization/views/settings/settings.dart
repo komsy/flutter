@@ -12,9 +12,10 @@ import 'package:k_store/utils/constants/sizes.dart';
 
 import '../../../../common/widgets/list_tiles/user_profile_tile.dart';
 import '../../../../data/repositories/authentication/authentication_repository.dart';
+import '../profile/widgets/load_data.dart';
 
-class SetttingsScreen extends StatelessWidget {
-  const SetttingsScreen({super.key});
+class SettingsScreen extends StatelessWidget {
+  const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +54,8 @@ class SetttingsScreen extends StatelessWidget {
                 const SizedBox(height: MSizes.spaceBtwSections),
                 const MSectionHeading(title: 'App Settings'),
                 const SizedBox(height: MSizes.spaceBtwItems),
-                MSettingsMenuTile(icon: Iconsax.document_upload, title: "Load Data", subTitle: "Add, remove products", trailing: Switch(value: false, onChanged: (value) {})),
+                MSettingsMenuTile(icon: Iconsax.document_upload, title: "Load Data", subTitle: "Add, remove products", onTap: () => Get.to(() => const LoadDataScreen())),
+                MSettingsMenuTile(icon: Iconsax.location, title: "Geolocation", subTitle: "Set recommendatio based on location", trailing: Switch(value: false, onChanged: (value) {})),
 
                 //Logout Button
                 const SizedBox(height: MSizes.spaceBtwSections),

@@ -17,7 +17,7 @@ class FavouriteScreen extends StatelessWidget {
       appBar: MAppBar(
         title: Text('Wishlist', style: Theme.of(context).textTheme.headlineMedium),
         actions: [
-          MCircularIcon(icon: Iconsax.add, onPressed: () => Get.to(const HomeSreen()))
+          MCircularIcon(icon: Iconsax.add, onPressed: () => Get.to(const HomeScreen()))
         ],
         ),
         body: SingleChildScrollView(

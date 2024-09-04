@@ -59,7 +59,7 @@ class MLoginForm extends StatelessWidget {
                   ),
                   const Text(MTexts.rememberMe),
                 ]),
-                TextButton(onPressed: () => Get.to(() => const ForgotPassword()), child: const Text(MTexts.forgetPassword)),
+                TextButton(onPressed: () => Get.to(() => const ForgetPassword()), child: const Text(MTexts.forgetPassword)),
               ],
             ),
             const SizedBox(height: MSizes.spaceBtwSections),

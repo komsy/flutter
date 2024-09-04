@@ -13,8 +13,8 @@ import '../all_products/all_products.dart';
 import 'widgets/home_categories.dart';
 import 'widgets/promo_slider.dart';
 
-class HomeSreen extends StatelessWidget {
-  const HomeSreen({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ class HomeSreen extends StatelessWidget {
               padding: const EdgeInsets.all(MSizes.defaultSpace),
               child:  Column(
                 children: [
-                  const MPromoSlider(banners: [MImages.promoBanner1,MImages.promoBanner2,MImages.promoBanner3]),
+                  const MPromoSlider(),
                   const SizedBox(height: MSizes.spaceBtwSections),
 
                   //Heading

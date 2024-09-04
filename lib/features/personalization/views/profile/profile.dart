@@ -46,7 +46,7 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
 
-              //Details
+              //Profile Information Details
               const SizedBox(height: MSizes.spaceBtwItems / 2),
               const Divider(),
               const SizedBox(height: MSizes.spaceBtwItems),
