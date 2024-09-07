@@ -18,12 +18,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
   //Map JSON oriented document snapshot from firebase to userModel
   factory BannerModel.fromSnapshot(DocumentSnapshot snapshot){
-      final data = snapshot.data as Map<String, dynamic>;
+      final data = snapshot.data() as Map<String, dynamic>;
       //Map JSON record to the model
       return BannerModel(
         imageUrl: data['ImageUrl'] ?? '', 
         targetScreen: data['TargetScreen'] ?? '', 
-        active: data['Active'] ?? '', 
+        active: data['Active'] ?? false, 
       );
     }
   

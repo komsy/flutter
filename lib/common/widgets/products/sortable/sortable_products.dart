@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:k_store/common/widgets/layouts/grid_layout.dart';
 import 'package:k_store/common/widgets/products/product_cards/product_card_vertical.dart';
+import 'package:k_store/features/shop/models/product_model.dart';
 import 'package:k_store/utils/constants/sizes.dart';
 
 class MSortableProducts extends StatelessWidget {
@@ -26,7 +27,7 @@ class MSortableProducts extends StatelessWidget {
         //Products
         MGridLayout(
           itemCount: 4, 
-          itemBuilder: (_,index) => const MProductCardVertical()
+          itemBuilder: (_,index) => MProductCardVertical(product: ProductModel.empty())
         ),
       ],
     );

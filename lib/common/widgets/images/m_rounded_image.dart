@@ -24,6 +24,7 @@ class MRoundedImage extends StatelessWidget {
     this.fit = BoxFit.contain,
     this.applyImageRadius = true,
     this.borderRadius = MSizes.md,
+    this.onPressed,
   });
 
   final bool applyImageRadius;
@@ -38,16 +39,20 @@ class MRoundedImage extends StatelessWidget {
   final Uint8List? memoryImage;
   final double width, height, padding;
   final double? margin;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: height,
-      margin: margin != null ? EdgeInsets.all(margin!) : null,
-      padding: EdgeInsets.all(padding),
-      decoration: BoxDecoration(border: border, color: backgroundColor, borderRadius: BorderRadius.circular(borderRadius)),
-      child: _buildImageWidget(),
+    return GestureDetector(
+      // onTap:onPressed,
+      child: Container(
+        width: width,
+        height: height,
+        margin: margin != null ? EdgeInsets.all(margin!) : null,
+        padding: EdgeInsets.all(padding),
+        decoration: BoxDecoration(border: border, color: backgroundColor, borderRadius: BorderRadius.circular(borderRadius)),
+        child: _buildImageWidget(),
+      ),
     );
   }
 

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:k_store/common/widgets/custom_shapes/containers/primary_header_containers.dart';
+import 'package:k_store/common/widgets/shimmers/vertical_product_shimmer.dart';
 import 'package:k_store/common/widgets/texts/section_heading.dart';
+import 'package:k_store/features/shop/controllers/products/product_controller.dart';
 import 'package:k_store/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:k_store/utils/constants/image_strings.dart';
 
@@ -17,7 +19,8 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {  
+    final controller = Get.put(ProductController());
     return  Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -65,7 +68,14 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: MSizes.spaceBtwItems),
                   
                   //Popular Products 
-                  MGridLayout(itemCount: 2,itemBuilder: (_,index) =>  const MProductCardVertical())
+                  Obx((){
+                    if(controller.isLoading.value) return const MVerticalProductShimmer();
+
+                    if(controller.featuredProducts.isEmpty){
+                      return Center(child: Text('No Data Found!', style: Theme.of(context).textTheme.bodyMedium));
+                    }
+                    return MGridLayout(itemCount: 2,itemBuilder: (_,index) =>  MProductCardVertical(product: controller.featuredProducts[index],));
+                   })
                 ],
               ),
             )

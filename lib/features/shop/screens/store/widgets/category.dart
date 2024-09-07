@@ -3,6 +3,7 @@ import 'package:k_store/common/widgets/layouts/grid_layout.dart';
 import 'package:k_store/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:k_store/common/widgets/texts/section_heading.dart';
 import 'package:k_store/features/shop/models/category_model.dart';
+import 'package:k_store/features/shop/models/product_model.dart';
 
 import '../../../../../common/widgets/brands/brand_show_case.dart';
 import '../../../../../utils/constants/image_strings.dart';
@@ -32,7 +33,7 @@ class MCategoryTab extends StatelessWidget {
               const MSectionHeading(title: 'You might like'),
               const SizedBox(height: MSizes.spaceBtwItems),
 
-              MGridLayout(itemCount: 4, itemBuilder: (_, index) => const MProductCardVertical()),
+              MGridLayout(itemCount: 4, itemBuilder: (_, index) => MProductCardVertical(product: ProductModel.empty())),
               const SizedBox(height: MSizes.spaceBtwSections),
             ],
           ),

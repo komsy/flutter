@@ -6,7 +6,6 @@ import 'package:k_store/features/shop/models/banner_model.dart';
 import '../../../utils/exceptions/firebase_exceptions.dart';
 import '../../../utils/exceptions/format_exceptions.dart';
 import '../../../utils/exceptions/platform_exceptions.dart';
-import '../authentication/authentication_repository.dart';
 
 class BannerRepository extends GetxController {
   static BannerRepository get instance => Get.find();
@@ -17,14 +16,15 @@ class BannerRepository extends GetxController {
   //Get all banners   
   Future<List<BannerModel>> fetchBanners() async {
     try{
-      final result = await _db.collection('Banners').where('active', isEqualTo: true).get();
-      return result.docs.map((documentSnapshot) => BannerModel.fromSnapshot(documentSnapshot)).toList();
+      final result = await _db.collection('Banners').where('Active', isEqualTo: true).get();
+      final data = result.docs.map((documentSnapshot) => BannerModel.fromSnapshot(documentSnapshot)).toList();
+      return data;
     }on FirebaseException catch (e) {
       throw MFirebaseException(e.code).message;
     } on PlatformException catch (e){
       throw MPlatformException(e.code).message;
     } catch (e) {
-      throw 'Something went wrong. Please try again';
+      throw 'Something went wrong while fetching Banners. Please try again';
     }
   }
 

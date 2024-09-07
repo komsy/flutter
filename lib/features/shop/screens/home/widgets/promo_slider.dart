@@ -24,7 +24,7 @@ class MPromoSlider extends StatelessWidget {
       if(controller.isLoading.value) return const MShimmerEffect(width: double.infinity, height: 190);
 
       if(controller.banners.isEmpty){
-        return Center(child: Text('No Data Found!', style: Theme.of(context).textTheme.bodyMedium!.apply(color:  Colors.white)));
+        return const Center(child: Text('No Data Found!'));
       } else {
         return Column(
           children: [
@@ -33,7 +33,7 @@ class MPromoSlider extends StatelessWidget {
                 viewportFraction: 1,
                 onPageChanged: (index, _) => controller.updatePageIndicator(index)
               ),
-              items: controller.banners.map((banner)=> MRoundedImage(
+              items: controller.banners.map((banner)=> MRoundedImage( onPressed: () => Get.toNamed(banner.targetScreen),
                 width: 400,height:400,image: banner.imageUrl, imageType: ImageType.network,)).toList(),
               ),
               const SizedBox(height: MSizes.spaceBtwItems),
