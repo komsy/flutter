@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 
 
 /// Helper functions for cloud-related operations.
-class TCloudHelperFunctions {
+class MCloudHelperFunctions {
 
   /// Helper function to check the state of a single database record.
   ///

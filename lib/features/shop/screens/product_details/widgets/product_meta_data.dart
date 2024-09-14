@@ -35,16 +35,16 @@ class MProductMetaData extends StatelessWidget {
               radius: MSizes.sm,
               backgroundColor: MColors.secondary.withOpacity(0.8),
               padding: const EdgeInsets.symmetric(horizontal: MSizes.sm, vertical: MSizes.xs),
-              child: Text('25%', style: Theme.of(context).textTheme.labelLarge!.apply(color: MColors.black)),
+              child: Text('$salePercentage%', style: Theme.of(context).textTheme.labelLarge!.apply(color: MColors.black)),
             ),
             const SizedBox(width: MSizes.spaceBtwItems),
 
-            Text('${MTexts.currency} 250', style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough)),
-            const SizedBox(width: MSizes.spaceBtwItems),
-            const MProductPriceText(price: ' 175', isLarge: true),
-            const SizedBox(width: MSizes.spaceBtwItems / 1.5),
-
-                       
+            if(product.productType == ProductType.single.toString() && product.salePrice > 0)
+              Text('${MTexts.currency} $product.price', style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough)),
+            if(product.productType == ProductType.single.toString() && product.salePrice > 0)
+              const SizedBox(width: MSizes.spaceBtwItems),
+            MProductPriceText(price: controller.getProductPrice(product), isLarge: true),
+            const SizedBox(width: MSizes.spaceBtwItems / 1.5),                      
           ],
         ),
         //Title
@@ -54,9 +54,9 @@ class MProductMetaData extends StatelessWidget {
         //Stock Status
         Row(
           children: [
-            const MProductTitletext(title: 'Status'),
+            MProductTitletext(title: product.title),
             const SizedBox(width: MSizes.spaceBtwItems),
-            Text('In Stock', style: Theme.of(context).textTheme.titleMedium),
+            Text(controller.getProductStockStatus(product.stock), style: Theme.of(context).textTheme.titleMedium),
           ],
         ),
         const SizedBox(width: MSizes.spaceBtwItems / 1.5),
@@ -67,10 +67,10 @@ class MProductMetaData extends StatelessWidget {
             MCircularImage(
               width: 32,
               height: 32,
-              image: MImages.shoeIcon,
+              image: product.brand != null ? product.brand!.image : MImages.shoeIcon,
               overlayColor: dark ? MColors.white : MColors.dark,
             ),
-            const MBrandTitleTextWithVerifiedIcon(title: 'Nike', brandTextSize: TextSizes.medium),
+            MBrandTitleTextWithVerifiedIcon(title: product.brand != null ? product.brand!.name : '', brandTextSize: TextSizes.medium),
           ],
         ) 
       ],

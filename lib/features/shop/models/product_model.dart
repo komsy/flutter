@@ -55,7 +55,7 @@ class ProductModel {
       'SalePrice': salePrice,
       'IsFeatured': isFeatured,
       'CategoryId': categoryId,
-      'Brand': brand,
+      'Brand': brand!.toJson(),
       'Description': description,
       'ProductType': productType,
       'ProductAttributes': productAttributes != null ?  productAttributes!.map((e) =>e.toJson()).toList() : [],
@@ -69,10 +69,10 @@ class ProductModel {
     final data = document.data()!;
 
       //Map JSON record to the model
-      return ProductModel(
+    return ProductModel(
         id: document.id, 
-        sku: data['SKU'], 
-        title: data['Title'], 
+        sku: data['SKU'], // ?? '', 
+        title: data['Title'], // ?? '', 
         stock: data['Stock'] ?? 0, 
         isFeatured: data['IsFeatured'] ?? false, 
         price: double.parse((data['Price'] ?? 0.0).toString()), 
@@ -95,10 +95,10 @@ class ProductModel {
       //Map JSON record to the model
       return ProductModel(
         id: document.id, 
-        sku: data['SKU'], 
-        title: data['Title'], 
+        sku: data['SKU'] ?? '', 
+        title: data['Title'] ?? '', 
         stock: data['Stock'] ?? 0, 
-        isFeatured: data['IsFeatured'] ?? '', 
+        isFeatured: data['IsFeatured'] ?? false, 
         price: double.parse((data['Price'] ?? 0.0).toString()), 
         salePrice: double.parse((data['SalePrice'] ?? 0.0).toString()), 
         thumbnail: data['Thumbnail'] ?? '',

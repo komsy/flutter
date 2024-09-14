@@ -6,6 +6,7 @@ import 'package:k_store/features/shop/screens/product_details/widgets/bottom_add
 import 'package:k_store/features/shop/screens/product_details/widgets/product_attributes.dart';
 import 'package:k_store/features/shop/screens/product_details/widgets/product_meta_data.dart';
 import 'package:k_store/features/shop/screens/product_reviews/product_reviews.dart';
+import 'package:k_store/utils/constants/enums.dart';
 import 'package:k_store/utils/constants/sizes.dart';
 import 'package:readmore/readmore.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
@@ -35,10 +36,10 @@ class ProductDetailScreen extends StatelessWidget {
                 //Rating & Share
                 const MRatingAndShare(),
                 //Price, Title, Stock & Brand
-                const MProductMetaData(product: ,),
+                MProductMetaData(product: product),
                 
                 //Attributes
-                const MProductAttributes(),
+                if(product.productType == ProductType.variable.toString()) MProductAttributes(product: product),
                 const SizedBox(height: MSizes.spaceBtwSections),
 
                 //Checkout Button
@@ -50,14 +51,14 @@ class ProductDetailScreen extends StatelessWidget {
                 //Description
                 const MSectionHeading(title: 'Description',showActionButton: false),
                 const SizedBox(height: MSizes.spaceBtwItems),
-                const ReadMoreText(
-                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
+                ReadMoreText(
+                  product.description ?? '',
                   trimLines: 2,
                   trimMode: TrimMode.Line,
                   trimCollapsedText: 'Show more',
                   trimExpandedText: 'Less',
-                  moreStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
-                  lessStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                  moreStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                  lessStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
                 ),
 
                 //Reviews

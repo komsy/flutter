@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:k_store/data/repositories/categories/category_repository.dart';
+import 'package:k_store/data/repositories/products/product_repository.dart';
 import 'package:k_store/features/shop/models/category_model.dart';
+import 'package:k_store/features/shop/models/product_model.dart';
 import 'package:k_store/utils/popups/loaders.dart';
 
 class CategoryController extends GetxController {
@@ -45,5 +47,16 @@ Future<void> fetchCategories() async {
 //Load selected category data
 
 //Get category or sub-category products.
+  Future<List<ProductModel>> getCategoryroducts({required String categoryId, int limit=4}) async {
+    try {
+      // Fetch limited (4) products against each subcategory
+      final products = await ProductRepository.instance.getProductsForCategory(categoryId:categoryId,limit:limit);
+      return products;
+
+    } catch (e) {
+      MLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      return [];
+    } 
+  }
 
 }

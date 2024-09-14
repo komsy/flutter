@@ -35,6 +35,7 @@ class ProfileScreen extends StatelessWidget {
                      Obx(() { 
                       final networkImage = controller.user.value.profilePicture;
                       final image = networkImage.isNotEmpty ? networkImage :MImages.user;
+                      print(image);
                       return controller.imageUploading.value 
                           ? const MShimmerEffect(width: 80, height: 80, radius: 80) 
                           : MCircularImage(image: image , width: 80, height: 80, imageType: networkImage.isNotEmpty ? ImageType.network : ImageType.asset);

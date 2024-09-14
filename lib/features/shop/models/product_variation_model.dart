@@ -1,6 +1,6 @@
 class ProductVariationModel {
   final String id;
-  String sku;
+  String sku; //nullable
   String image;
   String? description;
   double price;

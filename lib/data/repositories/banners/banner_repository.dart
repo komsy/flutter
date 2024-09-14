@@ -21,6 +21,8 @@ class BannerRepository extends GetxController {
       return data;
     }on FirebaseException catch (e) {
       throw MFirebaseException(e.code).message;
+    } on FormatException catch(_){
+      throw const MFormatException();
     } on PlatformException catch (e){
       throw MPlatformException(e.code).message;
     } catch (e) {

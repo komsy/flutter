@@ -51,9 +51,10 @@ class MProductCardVertical extends StatelessWidget {
               child: Stack(
                 children: [
                   //Thumbnail Image
-                  Center(child: MRoundedImage(height:180, width: 180 , image: product.thumbnail, applyImageRadius: true,imageType: ImageType.asset)),
+                  Center(child: MRoundedImage(height:180, width: 180 , image: product.thumbnail, applyImageRadius: true,imageType: ImageType.network)),
       
                   //Sale Tag
+                  if (salePercentage != null)
                   Positioned(
                     top: 12,
                     child: MRoundedContainer(
@@ -86,7 +87,7 @@ class MProductCardVertical extends StatelessWidget {
                   children: [
                     MProductTitletext(title: product.title, smallSize: true,),
                     const SizedBox(height: MSizes.spaceBtwItems /2),
-                    MBrandTitleTextWithVerifiedIcon(title: product.brand!.name,),
+                    MBrandTitleTextWithVerifiedIcon(title: product.brand != null ? product.brand!.name : 'Unknown Brand'),
                   ],
                 ),
               ),
