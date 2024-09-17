@@ -43,11 +43,26 @@ Future<List<ProductModel>> getAllFeaturedProducts() async {
     }
   }
 
+  //Get products based on the query
   Future<List<ProductModel>> fetchProductsByQuery(Query query) async {
     try{
       final querySnapShot = await query.get();
       final List<ProductModel> productList =querySnapShot.docs.map((doc) => ProductModel.fromQuerySnapshot(doc)).toList();
       return productList;
+    }on FirebaseException catch (e) {
+      throw MFirebaseException(e.code).message;
+    } on PlatformException catch (e){
+      throw MPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong fetching products. Please try again';
+    }
+  }
+  
+    Future<List<ProductModel>> getFavouriteProducts(List<String> productIds) async {
+    try{
+      final snapshot = await _db.collection('Products').where(FieldPath.documentId, whereIn: productIds).get();
+      print(snapshot);
+      return snapshot.docs.map((querySnapshot) => ProductModel.fromSnapshot(querySnapshot)).toList();
     }on FirebaseException catch (e) {
       throw MFirebaseException(e.code).message;
     } on PlatformException catch (e){

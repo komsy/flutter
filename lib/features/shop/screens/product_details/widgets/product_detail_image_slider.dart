@@ -5,10 +5,10 @@ import 'package:iconsax/iconsax.dart';
 import 'package:k_store/common/widgets/appbar/appbar.dart';
 import 'package:k_store/common/widgets/custom_shapes/curved_edges/curved_edges_widget.dart';
 import 'package:k_store/common/widgets/icons/m_circular_icon.dart';
+import 'package:k_store/common/widgets/products/favourite_icon/favourite_icon.dart';
 import 'package:k_store/features/shop/controllers/products/images_controller.dart';
 import 'package:k_store/features/shop/models/product_model.dart';
 import 'package:k_store/utils/constants/colors.dart';
-import 'package:k_store/utils/constants/image_strings.dart';
 import 'package:k_store/utils/constants/sizes.dart';
 
 import '../../../../../common/widgets/images/m_rounded_image.dart';
@@ -87,9 +87,9 @@ class MProductImageSlider extends StatelessWidget {
             ),
     
             //AppBar Icons
-            const MAppBar(
+            MAppBar(
               showBackArrow: true,
-              actions: [MCircularIcon(icon: Iconsax.heart5, color: Colors.red)],
+              actions: [MFavouriteIcon(productId: product.id)],
             )
           ],
         ),

@@ -13,6 +13,7 @@ import 'package:k_store/utils/exceptions/firebase_auth_exceptions.dart';
 import 'package:k_store/utils/exceptions/firebase_exceptions.dart';
 import 'package:k_store/utils/exceptions/format_exceptions.dart';
 import 'package:k_store/utils/exceptions/platform_exceptions.dart';
+import 'package:k_store/utils/local_storage/storage_utility.dart';
 
 class AuthenticationRepository extends GetxController{
   static AuthenticationRepository get instance =>Get.find();
@@ -42,13 +43,20 @@ class AuthenticationRepository extends GetxController{
     //Loacal Storage
     if(user != null){
       if(user.emailVerified){
+        
+        //Initialize User specific storage
+        await MLocalStorage.init(user.uid);
+
+        //If the user's email is verified, navigate to the main navigation menu
         Get.offAll(() => const NavigationMenu());
       } else {
         Get.offAll(() => VerifyEmailScreen(email: _auth.currentUser?.email));
       }
     }else {
       deviceStorage.writeIfNull('isFirstTime', true);
-      deviceStorage.read('isFirstTime') != true ? Get.offAll(() => const LoginScreen()) : Get.offAll(const OnBoardingScreen());
+      deviceStorage.read('isFirstTime') != true 
+      ? Get.offAll(() => const LoginScreen())  //Redirect to login screen if not the first time
+      : Get.offAll(const OnBoardingScreen());   //Redirect to Onboarding screen if it's the first time
     }
   }
 

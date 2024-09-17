@@ -83,7 +83,8 @@ class HomeScreen extends StatelessWidget {
                     }
                     return MGridLayout(
                       itemCount: controller.featuredProducts.length,
-                      itemBuilder: (_,index) =>  MProductCardVertical(product: controller.featuredProducts[index]));
+                      itemBuilder: (_,index) =>  MProductCardVertical(product: controller.featuredProducts[index]),
+                    );
                    })
                 ],
               ),

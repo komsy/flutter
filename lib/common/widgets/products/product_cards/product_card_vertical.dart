@@ -4,6 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:k_store/common/styles/shadows.dart';
 import 'package:k_store/common/widgets/containers/rounded_container.dart';
 import 'package:k_store/common/widgets/images/m_rounded_image.dart';
+import 'package:k_store/common/widgets/products/favourite_icon/favourite_icon.dart';
 import 'package:k_store/features/shop/controllers/products/product_controller.dart';
 import 'package:k_store/features/shop/models/product_model.dart';
 import 'package:k_store/features/shop/screens/product_details/product_detail.dart';
@@ -12,7 +13,6 @@ import 'package:k_store/utils/constants/enums.dart';
 import 'package:k_store/utils/constants/sizes.dart';
 import 'package:k_store/utils/helpers/helper_functions.dart';
 
-import '../../icons/m_circular_icon.dart';
 import '../../texts/m_brand_title_text_with_verified_icon.dart';
 import '../../texts/product_price_text.dart';
 import '../../texts/product_title_text.dart';
@@ -66,10 +66,10 @@ class MProductCardVertical extends StatelessWidget {
                   ),
       
                   //Favorite icon button
-                  const Positioned(
+                  Positioned(
                     top: 0,
                     right: 0,
-                    child: MCircularIcon(icon: Iconsax.heart5,color: Colors.red),
+                    child: MFavouriteIcon(productId: product.id),
                   ),
                 ],
               ),
