@@ -35,8 +35,8 @@ class StoreScreen extends StatelessWidget {
             'Store',
             style: Theme.of(context).textTheme.headlineMedium,
           ),
-          actions: [
-            MCartCounterIcon(onPressed: () {}, iconColor: null),
+          actions: const [
+            MCartCounterIcon(iconColor: null),
           ],
         ),
         body: NestedScrollView(

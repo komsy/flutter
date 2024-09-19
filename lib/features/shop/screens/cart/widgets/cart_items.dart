@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:k_store/features/shop/controllers/products/cart_controller.dart';
 
 import '../../../../../common/widgets/products/cart/add_remove_button.dart';
 import '../../../../../common/widgets/products/cart/cart_item.dart';
@@ -12,34 +14,46 @@ class MCartItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-          shrinkWrap: true,
-          separatorBuilder: (_,__) => const SizedBox(height: MSizes.spaceBtwSections), 
-          itemCount: 4,
-          itemBuilder: (_, index) =>  Column(
-            children: [
-              const MCartItem(),
-              if(showAddRemoveButtons)const SizedBox(height: MSizes.spaceBtwItems),
-      
-              if(showAddRemoveButtons)const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  //Add Remove Qty buttons
-                  Row(
-                    children: [
-                      //Extra Space
-                      SizedBox(width: 70),
-                      //Add remove button
-                      MProductQuantityWithAddRemoveButton(),
-                    ],
-                  ),
-      
-                  MProductPriceText(price: '250'),
-      
-                ],
-              ),
-            ],
-          ), 
-        );
+    final cartController = CartController.instance;
+    
+    return Obx( 
+    () => ListView.separated(
+        shrinkWrap: true,
+        separatorBuilder: (_,__) => const SizedBox(height: MSizes.spaceBtwSections), 
+        itemCount: cartController.cartItems.length,
+        itemBuilder: (_, index) => Obx(
+          () { 
+            final item = cartController.cartItems[index];
+            return Column(
+              children: [
+                MCartItem(cartItem: item),
+                if(showAddRemoveButtons)const SizedBox(height: MSizes.spaceBtwItems),
+        
+                if(showAddRemoveButtons)Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    //Add Remove Qty buttons
+                    Row(
+                      children: [
+                        //Extra Space
+                        const SizedBox(width: 70),
+                        //Add remove button
+                        MProductQuantityWithAddRemoveButton(
+                          quantity: item.quantity, 
+                          add: () => cartController.addOneToCart(item),
+                          remove: () => cartController.removeOneToCart(item),
+                        ),
+                      ],
+                    ),
+        
+                    MProductPriceText(price: (item.price * item.quantity).toStringAsFixed(1)),
+        
+                  ],
+                ),
+              ],
+            );
+        }),
+      ),
+    );
   }
 }

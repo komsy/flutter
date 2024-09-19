@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:k_store/common/widgets/containers/rounded_container.dart';
 import 'package:k_store/common/widgets/texts/section_heading.dart';
+import 'package:k_store/features/shop/controllers/products/checkout_controller.dart';
 import 'package:k_store/utils/constants/colors.dart';
-import 'package:k_store/utils/constants/image_strings.dart';
 import 'package:k_store/utils/helpers/helper_functions.dart';
 
 import '../../../../../utils/constants/sizes.dart';
@@ -13,24 +14,27 @@ class MBillingPaymentSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark= THelperFunctions.isDarkMode(context);
+    final controller = CheckoutController.instance;
 
     return Column(
       children: [
-        const MSectionHeading(title: 'Payment Method',showActionButton: false),
+        MSectionHeading(title: 'Payment Method',buttonTitle: 'Change', onPressed: () => controller.selectPaymentMethod(context),),
         const SizedBox(height: MSizes.spaceBtwItems),
-        Row(
-          children: [
-            MRoundedContainer(
-              width: 60,
-              height: 35,
-              backgroundColor: dark ? MColors.light : MColors.white,
-              padding: const EdgeInsets.all(MSizes.sm),
-              child: const Image(image: AssetImage(MImages.paypal), fit: BoxFit.contain),
-            ),
-            const SizedBox(height: MSizes.spaceBtwItems),
-            Text('Paypal', style: Theme.of(context).textTheme.bodyLarge),
-            
-          ],
+        Obx( () =>
+          Row(
+            children: [
+              MRoundedContainer(
+                width: 60,
+                height: 35,
+                backgroundColor: dark ? MColors.light : MColors.white,
+                padding: const EdgeInsets.all(MSizes.sm),
+                child: Image(image: AssetImage(controller.selectedPaymentMethod.value.image), fit: BoxFit.contain),
+              ),
+              const SizedBox(height: MSizes.spaceBtwItems),
+              Text(controller.selectedPaymentMethod.value.name, style: Theme.of(context).textTheme.bodyLarge),
+              
+            ],
+          ),
         )
       ],
     );

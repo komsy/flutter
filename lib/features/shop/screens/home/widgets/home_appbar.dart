@@ -32,8 +32,8 @@ class MHomeAppBar extends StatelessWidget {
           }),
         ],
       ),
-      actions: [
-         MCartCounterIcon(iconColor: MColors.white,onPressed: () => Get.to(() =>const CartScreen()))
+      actions: const [
+         MCartCounterIcon(iconColor: MColors.white)
       ],
     );
   }

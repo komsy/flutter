@@ -1,6 +1,4 @@
-
 import 'package:get/get.dart';
-import 'package:k_store/data/repositories/banners/banner_repository.dart';
 import 'package:k_store/data/repositories/brands/brand_repository.dart';
 import 'package:k_store/data/repositories/products/product_repository.dart';
 import 'package:k_store/features/shop/models/brand_model.dart';

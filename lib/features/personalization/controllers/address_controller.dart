@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:k_store/common/widgets/loaders/circular_loader.dart';
+import 'package:k_store/common/widgets/texts/section_heading.dart';
 import 'package:k_store/data/repositories/address/address_repository.dart';
 import 'package:k_store/features/personalization/models/address_model.dart';
+import 'package:k_store/features/personalization/views/address/add_new_address.dart';
+import 'package:k_store/features/personalization/views/address/widgets/single_address.dart';
 import 'package:k_store/utils/constants/image_strings.dart';
+import 'package:k_store/utils/constants/sizes.dart';
+import 'package:k_store/utils/helpers/cloud_helper_functions.dart';
 import 'package:k_store/utils/helpers/network_manager.dart';
 import 'package:k_store/utils/popups/full_screen_loader.dart';
 import 'package:k_store/utils/popups/loaders.dart';
@@ -64,6 +69,47 @@ class AddressController extends GetxController{
     }
   }
 
+
+//Show Addresses modalBottomSheet at checkout
+Future<dynamic> selectNewAddressPopup(BuildContext context){
+  return showModalBottomSheet(
+    context: context, 
+    builder: (_) => Container (
+      padding: const EdgeInsets.all(MSizes.lg),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const MSectionHeading(title: "Select Address", showActionButton: false),
+          FutureBuilder(
+            future: getAllUserAddresses(),
+            builder: (_, snapshot){
+              //Helper fn, handle loader, no record or error message
+              final response = MCloudHelperFunctions.checkMultiRecordState(snapshot: snapshot);
+              if (response != null) return response;
+
+              return ListView.builder(
+                shrinkWrap: true,
+                itemCount: snapshot.data!.length,
+                itemBuilder: (_, index) => MSingleAddress(
+                  address: snapshot.data![index],
+                  onTap: () async { 
+                    await selectAddress(snapshot.data![index]);
+                    Get.back();
+                  }
+                )
+              );
+            },
+          ),
+          const SizedBox(height: MSizes.defaultSpace * 2),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(onPressed: () => Get.to(() => const AddAddressScreen()), child: const Text('Add New Address'))
+          )
+        ],
+      ),
+    )
+  );
+}
   
   Future addNewaddresses() async {
     try {

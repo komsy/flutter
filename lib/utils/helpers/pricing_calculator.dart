@@ -1,6 +1,6 @@
 // import '../../features/shop/models/cart_model.dart';
 
-class TPricingCalculator {
+class MPricingCalculator {
 
   /// -- Calculate Price based on tax and shipping
   static double calculateTotalPrice(double productPrice, String location) {

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:k_store/features/shop/controllers/products/cart_controller.dart';
 import 'package:k_store/utils/constants/text_strings.dart';
+import 'package:k_store/utils/helpers/pricing_calculator.dart';
 
 import '../../../../../utils/constants/sizes.dart';
 
@@ -8,6 +10,9 @@ class MBillingAmountSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = CartController.instance;
+    final subTotal = controller.totalCartPrice.value;
+    
     return Column(
       children: [
         //Subtotal
@@ -15,7 +20,7 @@ class MBillingAmountSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('Subtotal', style: Theme.of(context).textTheme.bodyMedium),
-            Text('${MTexts.currency} 250', style: Theme.of(context).textTheme.bodyMedium),
+            Text('${MTexts.currency} $subTotal', style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),
         const SizedBox(height: MSizes.spaceBtwItems / 2),
@@ -25,7 +30,7 @@ class MBillingAmountSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('Shipping Fee', style: Theme.of(context).textTheme.bodyMedium),
-            Text('${MTexts.currency} 5', style: Theme.of(context).textTheme.labelLarge),
+            Text('${MTexts.currency} ${MPricingCalculator.calculateShippingCost(subTotal, 'KE')}', style: Theme.of(context).textTheme.labelLarge),
           ],
         ),
         const SizedBox(height: MSizes.spaceBtwItems / 2),
@@ -35,7 +40,7 @@ class MBillingAmountSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('Tax Fee', style: Theme.of(context).textTheme.bodyMedium),
-            Text('${MTexts.currency} 25', style: Theme.of(context).textTheme.labelLarge),
+            Text('${MTexts.currency} ${MPricingCalculator.calculateTax(subTotal, 'KE')}', style: Theme.of(context).textTheme.labelLarge),
           ],
         ),
         const SizedBox(height: MSizes.spaceBtwItems / 2),
@@ -44,7 +49,7 @@ class MBillingAmountSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('Order Total', style: Theme.of(context).textTheme.bodyMedium),
-            Text('${MTexts.currency} 500', style: Theme.of(context).textTheme.titleMedium),
+            Text('${MTexts.currency} ${MPricingCalculator.calculateTotalPrice(subTotal, 'KE')}', style: Theme.of(context).textTheme.titleMedium),
           ],
         ),
       ],

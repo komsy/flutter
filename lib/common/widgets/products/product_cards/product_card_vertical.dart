@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:k_store/common/styles/shadows.dart';
 import 'package:k_store/common/widgets/containers/rounded_container.dart';
 import 'package:k_store/common/widgets/images/m_rounded_image.dart';
+import 'package:k_store/common/widgets/products/cart/add_to_cart_button.dart';
 import 'package:k_store/common/widgets/products/favourite_icon/favourite_icon.dart';
 import 'package:k_store/features/shop/controllers/products/product_controller.dart';
 import 'package:k_store/features/shop/models/product_model.dart';
@@ -119,20 +119,7 @@ class MProductCardVertical extends StatelessWidget {
                 ),
 
                 //Add to cart button
-                Container(
-                  decoration: const BoxDecoration(
-                    color: MColors.dark,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(MSizes.cardRadiusMd),
-                      bottomRight:  Radius.circular(MSizes.productImageRadius),
-                    )
-                  ),
-                  child:const SizedBox(
-                    width: MSizes.iconLg ,
-                    height: MSizes.iconLg ,
-                    child: Center(child: Icon(Iconsax.add, color: MColors.white)),
-                  ),
-                )
+                ProductCardAddToCartButton(product: product)
               ],
             )
           ],
