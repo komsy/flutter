@@ -41,7 +41,7 @@ class ProductDetailScreen extends StatelessWidget {
                 
                 //Attributes
                 if(product.productType == ProductType.variable.toString()) MProductAttributes(product: product),
-                const SizedBox(height: MSizes.spaceBtwSections),
+                if(product.productType == ProductType.variable.toString()) const SizedBox(height: MSizes.spaceBtwSections),
 
                 //Checkout Button
                 SizedBox(

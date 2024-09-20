@@ -22,7 +22,7 @@ class MProductAttributes extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
     final controller = Get.put(VariationController());
-
+  print("Variations id ${controller.variationStockStatus.value}");
     return Obx(() => Column(
           children: [
             //Selected atrribute pricing & description
@@ -66,9 +66,9 @@ class MProductAttributes extends StatelessWidget {
                         Row(
                           children: [
                             const MProductTitletext(
-                                title: 'Stock: ', smallSize: true),
+                                title: 'Stock:  ', smallSize: true),
                             Text(controller.variationStockStatus.value,
-                                style: Theme.of(context).textTheme.titleMedium),
+                                style: Theme.of(context).textTheme.titleSmall),
                           ],
                         )
                       ],
@@ -123,8 +123,8 @@ class MProductAttributes extends StatelessWidget {
                                           }
                                         }
                                       : null);
-                            }).toList(),
-                          ))
+                            }).toList()),
+                          )
                     ],
                   ))
               .toList(),

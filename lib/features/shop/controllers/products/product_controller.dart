@@ -1,7 +1,4 @@
 import 'package:get/get.dart';
-import 'package:k_store/features/shop/models/brand_model.dart';
-import 'package:k_store/features/shop/models/product_attribute_model.dart';
-import 'package:k_store/features/shop/models/product_variation_model.dart';
 import 'package:k_store/utils/constants/enums.dart';
 import 'package:k_store/utils/popups/loaders.dart';
 
@@ -87,16 +84,16 @@ class ProductController extends GetxController {
     super.onInit();
   }
 
-  //Fetch Banners
+  //Fetch products
   Future<void> fetchFeaturedProducts() async {
     try{
-      //Show loader while loading banners
+      //Show loader while loading products
       isLoading.value = true;
 
-      //Fetch Banners from data source(Firestore, API, etc)
+      //Fetch products from data source(Firestore, API, etc)
       final products = await productRepository.getFeaturedProducts();
       // print(products);
-      //Assign banners
+      //Assign products
       featuredProducts.assignAll(products);
 
     }catch (e) {
@@ -107,7 +104,7 @@ class ProductController extends GetxController {
     }
   }
 
-  //Fetch Banners
+  //Fetch products
   Future<List<ProductModel>> fetchAllFeaturedProducts() async {
     try{
       //Fetch All products from data source(Firestore, API, etc)

@@ -1,10 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:k_store/common/widgets/appbar/appbar.dart';
 import 'package:k_store/common/widgets/custom_shapes/curved_edges/curved_edges_widget.dart';
-import 'package:k_store/common/widgets/icons/m_circular_icon.dart';
 import 'package:k_store/common/widgets/products/favourite_icon/favourite_icon.dart';
 import 'package:k_store/features/shop/controllers/products/images_controller.dart';
 import 'package:k_store/features/shop/models/product_model.dart';

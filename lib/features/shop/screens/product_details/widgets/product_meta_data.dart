@@ -40,7 +40,7 @@ class MProductMetaData extends StatelessWidget {
             const SizedBox(width: MSizes.spaceBtwItems),
 
             if(product.productType == ProductType.single.toString() && product.salePrice > 0)
-              Text('${MTexts.currency} $product.price', style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough)),
+              Text('${MTexts.currency} ${product.price}', style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough)),
             if(product.productType == ProductType.single.toString() && product.salePrice > 0)
               const SizedBox(width: MSizes.spaceBtwItems),
             MProductPriceText(price: controller.getProductPrice(product), isLarge: true),
@@ -48,13 +48,13 @@ class MProductMetaData extends StatelessWidget {
           ],
         ),
         //Title
-        const MProductTitletext(title: 'Green Nike Sports Shirt'),
+        MProductTitletext(title: product.title),
         const SizedBox(width: MSizes.spaceBtwItems / 1.5),
 
         //Stock Status
         Row(
           children: [
-            MProductTitletext(title: product.title),
+            const MProductTitletext(title: 'Stock: '),
             const SizedBox(width: MSizes.spaceBtwItems),
             Text(controller.getProductStockStatus(product.stock), style: Theme.of(context).textTheme.titleMedium),
           ],
@@ -67,6 +67,7 @@ class MProductMetaData extends StatelessWidget {
             MCircularImage(
               width: 32,
               height: 32,
+              imageType: ImageType.asset,
               image: product.brand != null ? product.brand!.image : MImages.shoeIcon,
               overlayColor: dark ? MColors.white : MColors.dark,
             ),

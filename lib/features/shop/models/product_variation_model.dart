@@ -26,10 +26,11 @@ class ProductVariationModel {
   toJson() {
     return {
       'Id': id,
-      'SKU': sku,
+      'Image': image,
       'Description': description,
       'Price': price,
       'SalePrice': salePrice,
+      'SKU': sku,
       'Stock': stock,
       'AttributesValues': attributeValues,
     };
@@ -39,16 +40,21 @@ class ProductVariationModel {
   factory ProductVariationModel.fromJson(Map<String, dynamic> document){
     final data = document;
     if(data.isEmpty) return ProductVariationModel.empty();
-
       //Map JSON record to the model
       return ProductVariationModel(
-        id: data['Id'] ?? '', 
-        price: double.parse((data['Price'] ?? 0.0).toString()), 
-        sku: data['SKU'] ?? '', 
-        stock: data['Stock'] ?? '', 
-        salePrice: double.parse((data['SalePrice'] ?? 0.0).toString()), 
+        id: data['Id'] ?? '',
+        price: double.parse((data['Price'] ?? 0.0).toString()),
+        sku: data['SKU'] ?? '',
+        stock: data['Stock'] ?? 0,
+        salePrice: double.parse((data['SalePrice'] ?? 0.0).toString()),
         image: data['Image'] ?? '',
-        attributeValues: Map<String, String>.from(data['AttributeValues'])
+        description: data['Description'] ?? '',
+        // attributeValues: Map<String, String>.from(data['AttributeValues'])
+        
+        // Handle null 'AttributeValues' safely
+        attributeValues: data['AttributeValues'] != null
+            ? Map<String, String>.from(data['AttributeValues'])
+            : {}, // Return an empty map if 'AttributeValues' is null
       );
   }
 }

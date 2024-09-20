@@ -12,9 +12,9 @@ class MFavouriteIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final controller = Get.put(FavouritesController());
+    final controller = Get.put(FavouritesController());
     
-    final controller = FavouritesController.instance;
+    // final controller = FavouritesController.instance;
     
     return Obx(
         () => MCircularIcon(

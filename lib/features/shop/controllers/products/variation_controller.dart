@@ -25,7 +25,7 @@ class VariationController extends GetxController {
     orElse: () => ProductVariationModel.empty(),
     );
 
-    //Show the selected variation image asa main Image
+    //Show the selected variation image as main Image
     if(selectedVariation.image.isNotEmpty) {
       ImagesController.instance.selectedProductImage.value = selectedVariation.image;
     }
@@ -35,6 +35,8 @@ class VariationController extends GetxController {
       final cartController = CartController.instance;
       cartController.productQuantityInCart.value = cartController.getVariationQuantityInCart(product.id, selectedVariation.id);
     }
+    
+    getProductVariationStockStatus();
 
     //Assign selected variation
     this.selectedVariation.value = selectedVariation;
@@ -85,6 +87,10 @@ class VariationController extends GetxController {
   //Check product variation stock status
   void getProductVariationStockStatus() {
     variationStockStatus.value = selectedVariation.value.stock > 0 ? 'In Stock' : 'Out of Stock';
+  }
+
+   String getProductStockStatus(int stock) {
+    return stock > 0 ? 'In Stock' : 'Out of Stock';
   }
 
   //Reset selected attributes when switching products

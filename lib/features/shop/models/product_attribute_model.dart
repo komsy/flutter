@@ -9,15 +9,15 @@ class ProductAttributeModel {
     return {'Name': name, 'Values':values};
   }
 
-    //Map Json oriented document snapshot from Firebase to userModel
+  //Map Json oriented document snapshot from Firebase to userModel
   factory ProductAttributeModel.fromJson(Map<String, dynamic> document){
     final data = document;
     if(data.isEmpty) return ProductAttributeModel();
 
-      //Map JSON record to the model
-      return ProductAttributeModel(
-        name: data.containsKey('Name') ? data['Name'] : '', 
-        values: List<String>.from(data['Values']), 
-      );
+    //Map JSON record to the model
+    return ProductAttributeModel(
+      name: data.containsKey('Name') ? data['Name'] : '', 
+      values: List<String>.from(data['Values']), 
+    );
   }
 }

@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:k_store/common/widgets/custom_shapes/containers/primary_header_containers.dart';
@@ -6,7 +5,6 @@ import 'package:k_store/common/widgets/shimmers/vertical_product_shimmer.dart';
 import 'package:k_store/common/widgets/texts/section_heading.dart';
 import 'package:k_store/features/shop/controllers/products/product_controller.dart';
 import 'package:k_store/features/shop/screens/home/widgets/home_appbar.dart';
-import 'package:k_store/utils/constants/image_strings.dart';
 
 import '../../../../common/widgets/containers/search_container.dart';
 import '../../../../common/widgets/layouts/grid_layout.dart';

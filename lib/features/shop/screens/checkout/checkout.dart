@@ -86,9 +86,9 @@ class CheckoutScreen extends StatelessWidget {
               //   subtitle: 'Your item will be shipped soon!',
               //   onPressed: () => Get.offAll(() => const NavigationMenu()),
               // )), 
-              onPressed: //subTotal > 0 
-                 () => orderController.processOrder(totalAmount),
-                // : () => MLoaders.warningSnackBar(title: 'Empty Cart', message:'Add items in the cart in order to procees.'),
+              onPressed: subTotal > 0 
+                 ? () => orderController.processOrder(totalAmount)
+                 : () => MLoaders.warningSnackBar(title: 'Empty Cart', message:'Add items in the cart in order to procees.'),
               child: Text('Check out ${MTexts.currency} $totalAmount')
             ),
       ),
