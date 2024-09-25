@@ -24,7 +24,7 @@ class ProductModel {
   ProductModel({
     required this.id,
     required this.title,
-     this.stock=90,
+    this.stock=90,
     required this.price,
     required this.thumbnail,
     required this.productType,

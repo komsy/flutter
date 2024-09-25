@@ -10,7 +10,8 @@ class MBillingAddressSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = AddressController.instance;
-
+print('Address: ${controller.selectedAddress.value}');
+print('Address: ${controller.selectedAddress.value.name}');
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -18,14 +19,14 @@ class MBillingAddressSection extends StatelessWidget {
         controller.selectedAddress.value.id.isNotEmpty ? 
         Column(
           children:[
-            Text('Coding with M', style: Theme.of(context).textTheme.bodyLarge),
+            Text(controller.selectedAddress.value.name, style: Theme.of(context).textTheme.bodyLarge),
             const SizedBox(height: MSizes.spaceBtwItems / 2),
 
             Row(
               children: [
                 const Icon(Icons.phone, color: Colors.grey, size: 16),
                 const SizedBox(width: MSizes.spaceBtwItems),
-                Text('+2547123456798', style: Theme.of(context).textTheme.bodyMedium),
+                Text(controller.selectedAddress.value.phoneNumber, style: Theme.of(context).textTheme.bodyMedium),
               ],
             ),
             const SizedBox(height: MSizes.spaceBtwItems / 2),
