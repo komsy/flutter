@@ -1,33 +1,40 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
-import 'package:k_store/data/repositories/authentication/authentication_repository.dart';
-import 'package:k_store/features/shop/models/order_model.dart';
+import 'package:multiapp/SQLite/sqlite.dart';
+import 'package:multiapp/features/personalization/models/Setting_model.dart';
+import 'package:multiapp/features/shop/models/order_item_model.dart';
+import 'package:multiapp/features/shop/models/order_model.dart';
 
 class OrderRepository extends GetxController {
   static OrderRepository get instance => Get.find();
 
-  //Variables
-  final _db = FirebaseFirestore.instance;
+  // Initialize the database instance here
+  final LocalDatabase db = LocalDatabase.instance;
 
-  //Get all order related to current user
-  Future<List<OrderModel>> fetchUserOrders() async {
+  //Get all order
+  Future<void> saveOrders(OrderModel order) async{
     try{
-      final userId = AuthenticationRepository.instance.authUser!.uid;
-      if (userId.isEmpty) throw 'Unable to find user information. Try again in few minutes.';
-
-      final result = await _db.collection('Users').doc(userId).collection('Orders').get();
-      return result.docs.map((documentSnapshot) => OrderModel.fromSnapshot(documentSnapshot)).toList();
+      await db.saveOrders(order);
     } catch (e) {
-        throw 'Something went wrong while fetching Order Information. Please try again later';
+      print("eror saving order: $e");
+      throw 'Something went wrong while saving Order Information. Please try again later';
     }
   }
-    //Store new user order
-    Future<void> saveOrder(OrderModel order, String userId) async{
-      try{
-        await _db.collection('Users').doc(userId).collection('Orders').add(order.toJson());
-      } catch (e) {
-        throw 'Something went wrongwhile saving Order Information. Please try again later';
-      }
+
+  Future<void> saveOrderItems(OrderItemModel orderItem) async{
+    try{
+      await db.saveOrderItem(orderItem);
+    } catch (e) {
+      print("eror saving order: $e");
+      throw 'Something went wrong while saving Order Information. Please try again later';
     }
+  }
   
+   Future<void> saveAppSettings(SettingModel settings) async{
+    try{
+      await db.saveAppSettings(settings);
+    } catch (e) {
+      print("eror saving SettingModel: $e");
+      throw 'Something went wrong while saving SettingModel Information. Please try again later';
+    }
+  }
 }

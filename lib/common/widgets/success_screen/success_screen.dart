@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:k_store/common/styles/spacing_styles.dart';
-import 'package:k_store/utils/constants/sizes.dart';
-import 'package:k_store/utils/constants/text_strings.dart';
-import 'package:k_store/utils/helpers/helper_functions.dart';
+import 'package:multiapp/common/styles/spacing_styles.dart';
+import 'package:multiapp/utils/constants/sizes.dart';
+import 'package:multiapp/utils/constants/text_strings.dart';
+import 'package:multiapp/utils/helpers/helper_functions.dart';
 
 class SuccessScreen extends StatelessWidget {
   const SuccessScreen({super.key, required this.image, required this.title, required this.subtitle, required this.onPressed});

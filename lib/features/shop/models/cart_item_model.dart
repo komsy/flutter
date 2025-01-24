@@ -1,53 +1,72 @@
 
 class CartItemModel {
-    String productId;
+    String itmCode;
+    int quantity;
     String title;
     double price;
-    String? image;
-    int quantity;
-    String variationId;
-    String?brandName;
-    Map<String, String>? selectedVariation;
+    double exVat;
+    double taxAmount;
+    String unit;
+    String basicUnit;
+    String variationId; 
+    String defaultPricing;
+    int vatRate;
+    String vatCode;
+    String? selectedVariation;
 
   CartItemModel({
-    required this.productId,
+    required this.defaultPricing,
+    required this.itmCode,
     required this.quantity,
+    required this.unit,
+    required this.basicUnit,
     this.variationId ='',
-    this.image,
     this.price = 0.0,
+    this.exVat = 0.00,
+    this.taxAmount = 0.00,
     this.title ='',
-    this.brandName,
+    required this.vatRate,
+    required this.vatCode,
     this.selectedVariation,
   });
 
   //Create Empty function for clean code
-  static CartItemModel empty() => CartItemModel(productId: '', quantity: 0);
-
+  static CartItemModel empty() => CartItemModel(itmCode: '',vatRate:0, quantity: 0, vatCode: '', unit: '', basicUnit: '', defaultPricing: 'QSP');
+  // String formattedTaxAmount = taxAmount.toStringAsFixed(2);
   //JSON Format
   Map<String, dynamic> toJson() {
     return {
-      'ProductId': productId,
+      'itmCode': itmCode,
       'Title': title,
+      'Unit': unit,
+      'basicUnit': basicUnit,
+      'defaultPricing': defaultPricing,
       'Price': price,
-      'Image': image,
+      'TaxAmount': taxAmount,
       'Quantity': quantity,
+      'vatRate': vatRate,
+      'vatCode': vatCode,
       'VariationId': variationId,
-      'BrandName': brandName,
       'SelectedVariation': selectedVariation,
     };
   }
 
     //Create a cartItem from Json map
   factory CartItemModel.fromJson(Map<String, dynamic> json){
+    // print("json: $json");
     return CartItemModel(
-        productId: json['ProductId'],  
+        itmCode: json['itmCode'],  
         title: json['Title'],  
+        unit: json['Unit'],  
+        basicUnit: json['basicUnit'],  
         price: json['Price']?.toDouble(), 
-        image: json['Image'], 
+        taxAmount: json['TaxAmount']?.toDouble(), 
+        defaultPricing: json['defaultPricing'] as String, 
         quantity: json['Quantity'],  
+        vatRate: json['vatRate'],  
+        vatCode: json['vatCode'],  
         variationId: json['VariationId'],  
-        brandName: json['BrandName'], 
-        selectedVariation: json['SelectedVariation'] != null ? Map<String, String>.from(json['SelectedVariation']) : null,  
+        selectedVariation: json['SelectedVariation'],  
       );
   }
 }

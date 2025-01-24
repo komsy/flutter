@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:k_store/features/authentication/controllers/login/login_controller.dart';
-import 'package:k_store/features/authentication/screens/password_configuration/forgot_password.dart';
-import 'package:k_store/features/authentication/screens/sigup/signup.dart';
-import 'package:k_store/utils/constants/sizes.dart';
-import 'package:k_store/utils/constants/text_strings.dart';
-import 'package:k_store/utils/validators/validation.dart';
+import 'package:multiapp/features/authentication/controllers/login/login_controller.dart';
+import 'package:multiapp/features/authentication/screens/password_configuration/forgot_password.dart';
+import 'package:multiapp/utils/constants/sizes.dart';
+import 'package:multiapp/utils/constants/text_strings.dart';
+import 'package:multiapp/utils/validators/validation.dart';
 
 class MLoginForm extends StatelessWidget {
   const MLoginForm({
-    super.key,
+    super.key, 
   });
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(LoginController());
-
+    
     return Form(
       key: controller.loginFormKey,
       child: Padding(
@@ -68,7 +67,7 @@ class MLoginForm extends StatelessWidget {
             const SizedBox(height: MSizes.spaceBtwItems),
     
             //Create Acc Button
-            SizedBox(width: double.infinity, child: OutlinedButton(onPressed: () => Get.to(() => const SignupScreen()), child: const Text(MTexts.createAccount))),
+            // SizedBox(width: double.infinity, child: OutlinedButton(onPressed: () => Get.to(() => const SignupScreen()), child: const Text(MTexts.createAccount))),
           ],
         ),
       ),

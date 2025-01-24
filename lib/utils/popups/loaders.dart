@@ -29,7 +29,7 @@ class MLoaders {
     );
   }
 
-  static successSnackBar({required title, message = '', duration = 3}) {
+  static successSnackBar({required title, message = '', duration = 2}) {
     Get.snackbar(
       title,
       message,
@@ -55,7 +55,7 @@ class MLoaders {
       colorText: MColors.white,
       backgroundColor: Colors.orange,
       snackPosition: SnackPosition.BOTTOM,
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       margin: const EdgeInsets.all(20),
       icon: const Icon(Iconsax.warning_2, color: MColors.white),
     );
@@ -71,7 +71,7 @@ class MLoaders {
       colorText: MColors.white,
       backgroundColor: Colors.red.shade600,
       snackPosition: SnackPosition.BOTTOM,
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       margin: const EdgeInsets.all(20),
       icon: const Icon(Iconsax.warning_2, color: MColors.white),
     );

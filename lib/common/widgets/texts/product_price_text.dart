@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:k_store/utils/constants/text_strings.dart';
+import 'package:multiapp/utils/constants/text_strings.dart';
 
 class MProductPriceText extends StatelessWidget {
   const MProductPriceText({
@@ -19,7 +19,8 @@ class MProductPriceText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      currencySign + price,
+      // currencySign + price,
+      price,
       maxLines: maxLines,
       overflow: TextOverflow.ellipsis,
       style: isLarge

@@ -1,62 +1,52 @@
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
-import 'package:k_store/data/repositories/products/product_repository.dart';
-import 'package:k_store/features/shop/models/product_model.dart';
-import 'package:k_store/utils/popups/loaders.dart';
+import 'package:multiapp/data/repositories/authentication/authentication_repository.dart';
+import 'package:multiapp/features/shop/controllers/products/product_controller.dart';
+import 'package:multiapp/features/shop/models/product_model.dart';
 
 class AllProductsController extends GetxController {
   static AllProductsController get instance => Get.find();
 
-  final repository = ProductRepository.instance;
+  final repository = [];// ProductRepository.instance;
+  final controller = ProductController.instance;
   final RxString selectedSortOption = 'Name'.obs;
-  final RxList<ProductModel> products = <ProductModel>[].obs;
+  final RxList<ProductModels> products = <ProductModels>[].obs;
 
-  Future<List<ProductModel>> fetchProductsByQuery(Query? query) async {
-    try{
-      if(query == null) return[];
-      
-      final products = await repository.fetchProductsByQuery(query);
-      return products;
-    } catch (e) {
-      MLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
-      return [];
-    }
-  }
 
   void sortProducts (String sortOption) {
     selectedSortOption.value = sortOption;
+    final isQuantityPrice = AuthenticationRepository.instance.isQuantityPrice;
 
     switch (sortOption){
       case 'Name' :
-        products.sort((a,b) => a.title.compareTo(b.title));
+        products.sort((a,b) => a.longName.compareTo(b.longName));
       break;
       case 'Higher Price' :
-        products.sort((a,b) => b.price.compareTo(a.price));
+        products.sort((a,b) => b.rspIncVat.compareTo(a.rspIncVat));
       break;
       case 'Lower Price' :
-        products.sort((a,b) => a.price.compareTo(b.price));
+        products.sort((a,b) => a.rspIncVat.compareTo(b.rspIncVat));
       break;
-      case 'Newest' :
-        products.sort((a,b) => a.date!.compareTo(b.date!));
-      break;
-      case 'Sale' :
-        products.sort((a,b) {
-          if (b.salePrice > 0){
-            return b.salePrice.compareTo(b.salePrice);
-          } else if (a.salePrice > 0) {
-            return -1;
-          } else {
-            return 1;
-          }
-      });
-      break;
+      // case 'Newest' :
+      //   products.sort((a,b) => a.date!.compareTo(b.date!));
+      // break;
+      // case 'Sale' :
+      //   products.sort((a,b) {
+      //     if (b.rspIncVat > 0){
+      //       return b.rspIncVat.compareTo(b.rspIncVat);
+      //     } else if (a.rspIncVat > 0) {
+      //       return -1;
+      //     } else {
+      //       return 1;
+      //     }
+      // });
+      // break;
     default:
-    products.sort((a,b) => a.title.compareTo(b.title));
+    products.sort((a,b) => a.longName.compareTo(b.longName));
     }
   }
 
-  void assignProducts(List<ProductModel> products){
+  void assignProducts(List<ProductModels> products){
     //Assign products to the 'Products' list
     this.products.assignAll(products);
     sortProducts('Name');

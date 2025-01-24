@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:k_store/features/authentication/controllers/onboarding/onboarding_controller.dart';
-import 'package:k_store/features/authentication/screens/onboarding/widgets/onboarding_dot_navigation.dart';
-import 'package:k_store/features/authentication/screens/onboarding/widgets/onboarding_next_button.dart';
-import 'package:k_store/features/authentication/screens/onboarding/widgets/onboarding_page.dart';
-import 'package:k_store/features/authentication/screens/onboarding/widgets/onboarding_skip.dart';
-import 'package:k_store/utils/constants/image_strings.dart';
-import 'package:k_store/utils/constants/text_strings.dart';
+import 'package:multiapp/features/authentication/controllers/onboarding/onboarding_controller.dart';
+import 'package:multiapp/features/authentication/screens/onboarding/widgets/onboarding_dot_navigation.dart';
+import 'package:multiapp/features/authentication/screens/onboarding/widgets/onboarding_next_button.dart';
+import 'package:multiapp/features/authentication/screens/onboarding/widgets/onboarding_page.dart';
+import 'package:multiapp/features/authentication/screens/onboarding/widgets/onboarding_skip.dart';
+import 'package:multiapp/utils/constants/image_strings.dart';
+import 'package:multiapp/utils/constants/text_strings.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
@@ -35,16 +35,16 @@ class OnBoardingScreen extends StatelessWidget {
                 subTitle:MTexts.onBoardingSubTitle2
                 ),
                 
-               OnBoardingPage(
-                image:MImages.onBoardingImage3,
-                title:MTexts.onBoardingTitle3,
-                subTitle:MTexts.onBoardingSubTitle3
-                ),
+              //  OnBoardingPage(
+              //   image:MImages.onBoardingImage3,
+              //   title:MTexts.onBoardingTitle3,
+              //   subTitle:MTexts.onBoardingSubTitle3
+              //   ),
             ],
           ),
                     
           //Skip button
-          const OnBoardingskip(),
+          // const OnBoardingskip(),
 
           //Dot navigation smoothpageindicator
           const OnBoardingDotNavigation(),

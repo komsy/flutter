@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:k_store/common/widgets/texts/section_heading.dart';
-import 'package:k_store/features/shop/models/payment_method_model.dart';
-import 'package:k_store/features/shop/screens/checkout/widgets/payment_tile.dart';
-import 'package:k_store/utils/constants/image_strings.dart';
-import 'package:k_store/utils/constants/sizes.dart';
+import 'package:multiapp/common/widgets/texts/section_heading.dart';
+import 'package:multiapp/features/shop/models/payment_method_model.dart';
+import 'package:multiapp/features/shop/screens/checkout/widgets/payment_tile.dart';
+import 'package:multiapp/utils/constants/image_strings.dart';
+import 'package:multiapp/utils/constants/sizes.dart';
 
 class CheckoutController extends GetxController {
   static CheckoutController get instance => Get.find();
@@ -13,7 +13,7 @@ class CheckoutController extends GetxController {
 
   @override
   void onInit(){
-    selectedPaymentMethod.value = PaymentMethodModel(name: 'Paypal', image: MImages.paypal);
+    selectedPaymentMethod.value = PaymentMethodModel(name: 'Cash', image: MImages.cash);
     super.onInit();
   }
 
@@ -28,11 +28,11 @@ class CheckoutController extends GetxController {
             children: [
               const MSectionHeading(title: 'Select Payment Method', showActionButton: false),
               const SizedBox(height: MSizes.spaceBtwSections),
-              MPaymentTile(paymentMethod: PaymentMethodModel(image: MImages.paypal, name: 'Paypal')),
+              MPaymentTile(paymentMethod: PaymentMethodModel(image: MImages.cash, name: 'Cash')),
               const SizedBox(height: MSizes.spaceBtwItems / 2),
-              MPaymentTile(paymentMethod: PaymentMethodModel(image: MImages.googlePay, name: 'Google Pay')),
+              MPaymentTile(paymentMethod: PaymentMethodModel(image: MImages.mpesa, name: 'Mobile Pay')),
               const SizedBox(height: MSizes.spaceBtwItems / 2),
-              MPaymentTile(paymentMethod: PaymentMethodModel(image: MImages.creditCard, name: 'Credit Card')),
+              MPaymentTile(paymentMethod: PaymentMethodModel(image: MImages.credit, name: 'Credit Note')),
               const SizedBox(height: MSizes.spaceBtwItems / 2),
               const SizedBox(height: MSizes.spaceBtwSections),
             ],

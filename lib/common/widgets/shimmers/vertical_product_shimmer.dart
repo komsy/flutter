@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:k_store/common/widgets/layouts/grid_layout.dart';
-import 'package:k_store/common/widgets/shimmers/shimmer.dart';
-import 'package:k_store/utils/constants/sizes.dart';
-
+import 'package:multiapp/common/widgets/layouts/grid_layout.dart';
+import 'package:multiapp/common/widgets/shimmers/shimmer.dart';
+import 'package:multiapp/utils/constants/sizes.dart';
+ 
 class MVerticalProductShimmer extends StatelessWidget {
   const MVerticalProductShimmer({
     super.key,
-    this.itemCount = 4,
+    this.itemCount = 9,
   });
 
   final int itemCount;
@@ -21,7 +21,7 @@ class MVerticalProductShimmer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //Image
-            MShimmerEffect(width: 180, height: 180),
+            MShimmerEffect(width: 180, height: 100),
             SizedBox(height: MSizes.spaceBtwItems),
 
             //Text

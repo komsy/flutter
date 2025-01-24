@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:k_store/features/personalization/views/settings/settings.dart';
-import 'package:k_store/features/shop/screens/home/home.dart';
-import 'package:k_store/features/shop/screens/store/store.dart';
-import 'package:k_store/features/shop/screens/wishlist/wishlist.dart';
-import 'package:k_store/utils/constants/colors.dart';
-import 'package:k_store/utils/helpers/helper_functions.dart';
+import 'package:multiapp/features/personalization/views/settings/settings.dart';
+import 'package:multiapp/features/shop/screens/customer/customer.dart';
+import 'package:multiapp/features/shop/screens/home/home.dart';
+import 'package:multiapp/features/shop/screens/order/Order.dart';
+import 'package:multiapp/utils/constants/colors.dart';
+import 'package:multiapp/utils/helpers/helper_functions.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
@@ -28,8 +28,8 @@ class NavigationMenu extends StatelessWidget {
 
             destinations: const  [
               NavigationDestination(icon: Icon(Iconsax.home), label: 'Home'),
-              NavigationDestination(icon: Icon(Iconsax.shop), label: 'Store'),
-              NavigationDestination(icon: Icon(Iconsax.heart), label: 'Wishlist'),
+              NavigationDestination(icon: Icon(Iconsax.shop), label: 'Orders'),
+              NavigationDestination(icon: Icon(Iconsax.heart), label: 'Customers'),
               NavigationDestination(icon: Icon(Iconsax.user), label: 'Profile'),
             ],
           ),
@@ -44,7 +44,7 @@ class NavigationController extends GetxController {
 
   final screens= [
     const HomeScreen() ,
-    const StoreScreen(),
-    const FavouriteScreen(),
+    const OrderScreen(),
+    const CustomerScreen(),
     const SettingsScreen()];
 }

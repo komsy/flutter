@@ -69,7 +69,13 @@ class THelperFunctions {
       MaterialPageRoute(builder: (_) => screen),
     );
   }
-
+  static String limitWords(String? text, int wordLimit) {
+    if (text == null || text.isEmpty) return '';
+    final words = text.split(' ');
+    return words.length > wordLimit
+        ? '${words.take(wordLimit).join(' ')}...'
+        : text;
+  }
   static String truncateText(String text, int maxLength) {
     if (text.length <= maxLength) {
       return text;
@@ -94,8 +100,16 @@ class THelperFunctions {
     return MediaQuery.of(Get.context!).size.width;
   }
 
-  static String getFormattedDate(DateTime date, {String format = 'dd MMM yyyy'}) {
-    return DateFormat(format).format(date);
+  // static String getFormattedDate(DateTime date, {String format = 'dd MMM yyyy'}) {
+  //   return DateFormat(format).format(date);
+  // }
+
+
+  static String getFormattedDate(String date, {String format = 'dd MMM yyyy'}) {
+    // Parse the input string to a DateTime object
+    DateTime parsedDate = DateTime.parse(date);
+    // Format the parsed date
+    return DateFormat(format).format(parsedDate);
   }
 
   static List<T> removeDuplicates<T>(List<T> list) {

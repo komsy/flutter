@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:k_store/common/widgets/containers/rounded_container.dart';
-import 'package:k_store/features/shop/controllers/products/checkout_controller.dart';
-import 'package:k_store/features/shop/models/payment_method_model.dart';
-import 'package:k_store/utils/constants/colors.dart';
-import 'package:k_store/utils/constants/sizes.dart';
-import 'package:k_store/utils/helpers/helper_functions.dart';
+import 'package:multiapp/common/widgets/containers/rounded_container.dart';
+import 'package:multiapp/features/shop/controllers/products/checkout_controller.dart';
+import 'package:multiapp/features/shop/models/payment_method_model.dart';
+import 'package:multiapp/utils/constants/colors.dart';
+import 'package:multiapp/utils/constants/sizes.dart';
+import 'package:multiapp/utils/helpers/helper_functions.dart';
 
 class MPaymentTile extends StatelessWidget {
   const MPaymentTile({super.key, required this.paymentMethod});

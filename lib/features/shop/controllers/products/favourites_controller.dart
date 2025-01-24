@@ -1,14 +1,15 @@
 import 'dart:convert';
 import 'package:get/get.dart';
-import 'package:k_store/data/repositories/products/product_repository.dart';
-import 'package:k_store/features/shop/models/product_model.dart';
-import 'package:k_store/utils/local_storage/storage_utility.dart';
-import 'package:k_store/utils/popups/loaders.dart';
+import 'package:multiapp/SQLite/sqlite.dart';
+import 'package:multiapp/utils/local_storage/storage_utility.dart';
+import 'package:multiapp/utils/popups/loaders.dart';
 
 class FavouritesController extends GetxController{
   static FavouritesController get instance => Get.find();
   //Variables
   final favourites = <String, bool>{}.obs;
+  // Initialize the database instance here
+  final LocalDatabase db = LocalDatabase.instance;
 
   @override
   void onInit() {
@@ -29,26 +30,34 @@ class FavouritesController extends GetxController{
     return favourites[productId] ?? false;
   }
 
-  void toggleFavouriteProduct(String productId){
-    if(!favourites.containsKey(productId)){
+void toggleFavouriteProduct(String productId) async {
+  try {
+    if (!favourites.containsKey(productId)) {
       favourites[productId] = true;
+      const isFavourite = 1;
+      await db.updateFavProduct(isFavourite, productId);
       saveFavouritesToStorage();
-      MLoaders.customToast(message: 'Product has been added to the Wishlist.');
+      favourites.refresh();
+      MLoaders.customToast(message: 'Product has been added to the Favourite List.');
     } else {
       MLocalStorage.instance().removeData(productId);
       favourites.remove(productId);
+      const isFavourite = 0;
+      await db.updateFavProduct(isFavourite, productId);
       saveFavouritesToStorage();
       favourites.refresh();
-      MLoaders.customToast(message: 'Product has been removed from the Wishlist.');
+      MLoaders.customToast(message: 'Product has been removed from the Favourite List.');
     }
+  } catch (e) {
+    MLoaders.errorSnackBar(title: 'Error', message: 'Failed to update favourite status.');
   }
+}
+
   
   void saveFavouritesToStorage() {
     final encodedFavourites = json.encode(favourites);
     MLocalStorage.instance().saveData('favourites', encodedFavourites);
   }
 
-  Future<List<ProductModel>> favouriteProducts() async {
-    return await ProductRepository.instance.getFavouriteProducts(favourites.keys.toList());
-  }
+  
 }

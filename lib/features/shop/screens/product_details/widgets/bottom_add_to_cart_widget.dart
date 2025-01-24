@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:k_store/common/widgets/icons/m_circular_icon.dart';
-import 'package:k_store/features/shop/controllers/products/cart_controller.dart';
-import 'package:k_store/features/shop/models/product_model.dart';
-import 'package:k_store/utils/constants/colors.dart';
-import 'package:k_store/utils/constants/sizes.dart';
-import 'package:k_store/utils/helpers/helper_functions.dart';
+import 'package:multiapp/common/widgets/icons/m_circular_icon.dart';
+import 'package:multiapp/features/shop/controllers/products/cart_controller.dart';
+import 'package:multiapp/features/shop/models/product_model.dart';
+import 'package:multiapp/utils/constants/colors.dart';
+import 'package:multiapp/utils/constants/sizes.dart';
+import 'package:multiapp/utils/helpers/helper_functions.dart';
 
 class MBottomAddToCart extends StatelessWidget {
   const MBottomAddToCart({super.key, required this.product});
 
-  final ProductModel product;
-  
+  final ProductModels product;
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
@@ -28,7 +27,7 @@ class MBottomAddToCart extends StatelessWidget {
           topRight: Radius.circular(MSizes.cardRadiusLg),
         )
       ),
-      child: Obx(
+      child: Obx( 
         () => Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -42,8 +41,10 @@ class MBottomAddToCart extends StatelessWidget {
                   color: MColors.white,
                   onPressed: () => controller.productQuantityInCart.value < 1 ? null : controller.productQuantityInCart.value -=1,
                 ),
+                
                 const SizedBox(width: MSizes.spaceBtwItems),
                 Text(controller.productQuantityInCart.value.toString(), style: Theme.of(context).textTheme.titleSmall),
+               
                 const SizedBox(width: MSizes.spaceBtwItems),
                 MCircularIcon(
                   icon: Iconsax.add,

@@ -1,11 +1,9 @@
 import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:k_store/utils/constants/sizes.dart';
+import 'package:multiapp/utils/constants/sizes.dart';
 import '../../../utils/constants/enums.dart';
-import '../shimmers/shimmer.dart';
 
 class MRoundedImage extends StatelessWidget {
   const MRoundedImage({
@@ -61,7 +59,8 @@ class MRoundedImage extends StatelessWidget {
 
     switch (imageType) {
       case ImageType.network:
-        imageWidget = _buildNetworkImage();
+        // imageWidget = _buildNetworkImage();
+        imageWidget = _buildAssetImage();
         break;
       case ImageType.memory:
         imageWidget = _buildMemoryImage();
@@ -82,21 +81,21 @@ class MRoundedImage extends StatelessWidget {
   }
 
   // Function to build the network image widget
-  Widget _buildNetworkImage() {
-    if (image != null) {
-      // Use CachedNetworkImage for efficient loading and caching of network images // Not working in Web but just for loading
-      return CachedNetworkImage(
-        fit: fit,
-        color: overlayColor,
-        imageUrl: image!,
-        errorWidget: (context, url, error) => const Icon(Icons.error),
-        progressIndicatorBuilder: (context, url, downloadProgress) => MShimmerEffect(width: width, height: height),
-      );
-    } else {
-      // Return an empty container if no image is provided
-      return Container();
-    }
-  }
+  // Widget _buildNetworkImage() {
+  //   if (image != null) {
+  //     // Use CachedNetworkImage for efficient loading and caching of network images // Not working in Web but just for loading
+  //     return CachedNetworkImage(
+  //       fit: fit,
+  //       color: overlayColor,
+  //       imageUrl: image!,
+  //       errorWidget: (context, url, error) => const Icon(Icons.error),
+  //       progressIndicatorBuilder: (context, url, downloadProgress) => MShimmerEffect(width: width, height: height),
+  //     );
+  //   } else {
+  //     // Return an empty container if no image is provided
+  //     return Container();
+  //   }
+  // }
 
   // Function to build the memory image widget
   Widget _buildMemoryImage() {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:k_store/features/authentication/controllers/signup/signup_controler.dart';
-import 'package:k_store/utils/constants/colors.dart';
-import 'package:k_store/utils/constants/sizes.dart';
-import 'package:k_store/utils/constants/text_strings.dart';
-import 'package:k_store/utils/helpers/helper_functions.dart';
+import 'package:multiapp/features/authentication/controllers/login/login_controller.dart';
+import 'package:multiapp/utils/constants/colors.dart';
+import 'package:multiapp/utils/constants/sizes.dart';
+import 'package:multiapp/utils/constants/text_strings.dart';
+import 'package:multiapp/utils/helpers/helper_functions.dart';
 
 class MTermsAndConditionsCheckbox extends StatelessWidget {
   const MTermsAndConditionsCheckbox({
@@ -13,7 +13,7 @@ class MTermsAndConditionsCheckbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = SignupController.instance;
+    final controller = LoginController.instance;
     final dark = THelperFunctions.isDarkMode(context);
     return Row(children: [
       SizedBox(

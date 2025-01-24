@@ -11,7 +11,6 @@ class MRoutes {
   static const order = '/order';
   static const checkout = '/checkout';
   static const cart = '/cart';
-  static const brand = '/brand';
   static const allProducts = '/all-products';
   static const userProfile = '/user-profile';
   static const userAddress = '/user-address';

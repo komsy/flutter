@@ -1,4 +1,4 @@
-package com.kstore
+package com.multiapp.clients
 
 import io.flutter.embedding.android.FlutterActivity
 

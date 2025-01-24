@@ -27,7 +27,7 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace = "com.kstore"
+    namespace = "com.multiapp.clients"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -38,7 +38,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.kstore"
+        applicationId = "com.multiapp.clients"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdk = flutter.minSdkVersion
@@ -46,6 +46,9 @@ android {
         minSdkVersion 23 
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
+        ndk {
+           abiFilters "armeabi", "armeabi-v7a","arm64-v8a"
+      }
     }
 
     buildTypes {
@@ -53,6 +56,8 @@ android {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig = signingConfigs.debug
+            minifyEnabled true
+            shrinkResources true
         }
     }
 }

@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:k_store/common/widgets/appbar/appbar.dart';
-import 'package:k_store/common/widgets/images/m_circular_image.dart';
-import 'package:k_store/common/widgets/shimmers/shimmer.dart';
-import 'package:k_store/common/widgets/texts/section_heading.dart';
-import 'package:k_store/features/personalization/views/profile/widgets/change_name.dart';
-import 'package:k_store/features/personalization/views/profile/widgets/profile_menu.dart';
-import 'package:k_store/utils/constants/image_strings.dart';
-import 'package:k_store/utils/constants/sizes.dart';
-import 'package:k_store/utils/constants/text_strings.dart';
+import 'package:multiapp/common/widgets/appbar/appbar.dart';
+import 'package:multiapp/common/widgets/images/m_circular_image.dart';
+import 'package:multiapp/common/widgets/shimmers/shimmer.dart';
+import 'package:multiapp/common/widgets/texts/section_heading.dart';
+import 'package:multiapp/features/personalization/views/profile/widgets/change_name.dart';
+import 'package:multiapp/features/personalization/views/profile/widgets/profile_menu.dart';
+import 'package:multiapp/navigation_menu.dart';
+import 'package:multiapp/utils/constants/colors.dart';
+import 'package:multiapp/utils/constants/image_strings.dart';
+import 'package:multiapp/utils/constants/sizes.dart';
+import 'package:multiapp/utils/constants/text_strings.dart';
 
 import '../../../../utils/constants/enums.dart';
-import '../../controllers/user_controllers.dart';
+import '../../controllers/user_controller.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -23,78 +25,63 @@ class ProfileScreen extends StatelessWidget {
 
     return Scaffold(
       appBar:
-          const MAppBar(title: Text(MTexts.profileTitle), showBackArrow: true),
+          const MAppBar(title: Text(MTexts.profileTitle), showBackArrow: false),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(MSizes.defaultSpace),
-          child: Column(
-            children: [
-              SizedBox(
-                child: Column(
-                  children: [
-                     Obx(() { 
-                      final networkImage = controller.user.value.profilePicture;
-                      final image = networkImage.isNotEmpty ? networkImage :MImages.user;
-                      print(image);
-                      return controller.imageUploading.value 
-                          ? const MShimmerEffect(width: 80, height: 80, radius: 80) 
-                          : MCircularImage(image: image , width: 80, height: 80, imageType: networkImage.isNotEmpty ? ImageType.network : ImageType.asset);
-                        }),
-                    TextButton(
-                        onPressed: () => controller.uploadUserProfilePicture(),
-                        child: const Text(MTexts.profileSubTitle)),
-                  ],
-                ),
-              ),
+          child: Obx(() => Column(
+                children: [
+                  const SizedBox(
+                    child: Column(
+                      children: [
+                        Center(
+                            child: MCircularImage(
+                                image: MImages.user,
+                                width: 80,
+                                height: 80,
+                                imageType: ImageType.asset)),
+                      ],
+                    ),
+                  ),
 
-              //Profile Information Details
-              const SizedBox(height: MSizes.spaceBtwItems / 2),
-              const Divider(),
-              const SizedBox(height: MSizes.spaceBtwItems),
-              const MSectionHeading(title: MTexts.profileSectionHeading1),
-              const SizedBox(height: MSizes.spaceBtwItems),
+                  //Profile Information Details
+                  const SizedBox(height: MSizes.spaceBtwItems / 2),
+                  const Divider(),
+                  const SizedBox(height: MSizes.spaceBtwItems),
+                  const MSectionHeading(
+                    title: MTexts.profileSectionHeading1,
+                    showActionButton: false,
+                  ),
+                  const SizedBox(height: MSizes.spaceBtwItems),
 
-              MProfileMenu(
-                  onPressed: () => Get.to(() => const ChangeName()),
-                  title: 'Name',
-                  value: controller.user.value.fullName),
-              MProfileMenu(
-                  onPressed: () {},
-                  title: 'UserName',
-                  value: controller.user.value.userName),
+                  MProfileMenu(
+                      onPressed: () => Get.to(() => const ChangeName()),
+                      title: 'User Name',
+                      value: controller.user.value.userName),
+                  MProfileMenu(
+                      showIcon: false,
+                      onPressed: () {},
+                      title: 'Email',
+                      value: controller.user.value.email),
 
-              //Heading Personal Info
-              const SizedBox(height: MSizes.spaceBtwItems),
-              const Divider(),
-              const SizedBox(height: MSizes.spaceBtwItems),
-              const MSectionHeading(title: MTexts.profileSectionHeading2),
-              const SizedBox(height: MSizes.spaceBtwItems),
-
-              MProfileMenu(
-                  onPressed: () {},
-                  title: 'User ID',
-                  value: controller.user.value.id,
-                  icon: Iconsax.copy),
-              MProfileMenu(
-                  onPressed: () {},
-                  title: 'Email',
-                  value: controller.user.value.email),
-              MProfileMenu(
-                  onPressed: () {},
-                  title: 'Phone Number',
-                  value: controller.user.value.phoneNumber),
-              const Divider(),
-              const SizedBox(height: MSizes.spaceBtwItems),
-
-              Center(
-                child: TextButton(
-                  onPressed: () => controller.deleteAccountWarningPopup(),
-                  child: const Text(MTexts.profileCloseAccount,
-                      style: TextStyle(color: Colors.red)),
-                ),
-              )
-            ],
-          ),
+                  const SizedBox(height: MSizes.spaceBtwItems * 10),
+                  SizedBox(
+                    width: 250,
+                    child: OutlinedButton(
+                      onPressed: () => Get.off(() => const NavigationMenu()),
+                      style: OutlinedButton.styleFrom(
+                          backgroundColor: MColors.dark),
+                      child: Text(
+                        "Go Back",
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyMedium!
+                            .apply(color: MColors.light),
+                      ),
+                    ),
+                  )
+                ],
+              )),
         ),
       ),
     );

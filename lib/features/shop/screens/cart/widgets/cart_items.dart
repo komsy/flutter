@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:k_store/features/shop/controllers/products/cart_controller.dart';
+import 'package:multiapp/features/shop/controllers/products/cart_controller.dart';
 
 import '../../../../../common/widgets/products/cart/add_remove_button.dart';
 import '../../../../../common/widgets/products/cart/cart_item.dart';
@@ -32,6 +32,7 @@ class MCartItems extends StatelessWidget {
                 if(showAddRemoveButtons)Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    // Flexible(child: MProductTitletext(title: item.title, maxLines: 1)),
                     //Add Remove Qty buttons
                     Row(
                       children: [

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:k_store/features/authentication/controllers/onboarding/onboarding_controller.dart';
-import 'package:k_store/utils/constants/colors.dart';
-import 'package:k_store/utils/constants/sizes.dart';
-import 'package:k_store/utils/device/device_utility.dart';
-import 'package:k_store/utils/helpers/helper_functions.dart';
+import 'package:multiapp/features/authentication/controllers/onboarding/onboarding_controller.dart';
+import 'package:multiapp/utils/constants/colors.dart';
+import 'package:multiapp/utils/constants/sizes.dart';
+import 'package:multiapp/utils/device/device_utility.dart';
+import 'package:multiapp/utils/helpers/helper_functions.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 
@@ -23,7 +23,7 @@ class OnBoardingDotNavigation extends StatelessWidget {
       child: SmoothPageIndicator(
         controller: controller.pageController, 
         onDotClicked: controller.dotNavigationClick,
-        count: 3,
+        count: 2,
         effect: ExpandingDotsEffect(activeDotColor: dark ? MColors.light : MColors.dark, dotHeight:6),
       )
     );

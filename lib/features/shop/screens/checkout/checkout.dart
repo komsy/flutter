@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:k_store/common/widgets/containers/rounded_container.dart';
-import 'package:k_store/common/widgets/success_screen/success_screen.dart';
-import 'package:k_store/features/shop/controllers/products/cart_controller.dart';
-import 'package:k_store/features/shop/controllers/products/order_controller.dart';
-import 'package:k_store/features/shop/screens/cart/widgets/cart_items.dart';
-import 'package:k_store/features/shop/screens/checkout/widgets/billing_address_section.dart';
-import 'package:k_store/navigation_menu.dart';
-import 'package:k_store/utils/constants/colors.dart';
-import 'package:k_store/utils/constants/image_strings.dart';
-import 'package:k_store/utils/helpers/pricing_calculator.dart';
-import 'package:k_store/utils/popups/loaders.dart';
+import 'package:multiapp/common/widgets/containers/rounded_container.dart';
+import 'package:multiapp/common/widgets/products/cart/naration_widget.dart';
+import 'package:multiapp/common/widgets/products/cart/customer_widget.dart';
+import 'package:multiapp/features/shop/controllers/products/cart_controller.dart';
+import 'package:multiapp/features/shop/controllers/products/order_controller.dart';
+import 'package:multiapp/features/shop/screens/cart/widgets/cart_items.dart';
+import 'package:multiapp/utils/constants/colors.dart';
+import 'package:multiapp/utils/helpers/pricing_calculator.dart';
+import 'package:multiapp/utils/popups/loaders.dart';
 
 import '../../../../common/widgets/appbar/appbar.dart';
-import '../../../../common/widgets/products/cart/coupon_widget.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/helpers/helper_functions.dart';
@@ -29,6 +26,7 @@ class CheckoutScreen extends StatelessWidget {
     final controller = CartController.instance;
     final subTotal = controller.totalCartPrice.value;
     final orderController = Get.put(OrderController());
+    // final customercontroller = Get.put(CustomerController());
     final totalAmount = MPricingCalculator.calculateTotalPrice(subTotal,'KE');
 
     return Scaffold(
@@ -41,11 +39,25 @@ class CheckoutScreen extends StatelessWidget {
               //Items in cart
               const MCartItems(showAddRemoveButtons: false),
               const SizedBox(height: MSizes.spaceBtwSections),
-
+              
               //Coupon Textfield
-              const MCouponCode(),
+              const MNaration(),
               const SizedBox(height: MSizes.spaceBtwSections),
 
+              //Customer Section
+              MRoundedContainer(
+                showBorder: true,
+                padding: const EdgeInsets.all(MSizes.md),
+                backgroundColor: dark ? MColors.black : MColors.white,
+                child: const Column(
+                  children: [
+                    //customer Textfield
+                    MCustomerCode(),
+                    SizedBox(height: MSizes.spaceBtwItems),
+                  ],
+                ),
+              ),
+              const SizedBox(height: MSizes.spaceBtwSections),
               //Billing Section
               MRoundedContainer(
                 showBorder: true,
@@ -58,16 +70,16 @@ class CheckoutScreen extends StatelessWidget {
                     SizedBox(height: MSizes.spaceBtwItems),
 
                     //Divider
-                    Divider(),
-                    SizedBox(height: MSizes.spaceBtwItems),
+                    // Divider(),
+                    // SizedBox(height: MSizes.spaceBtwItems),
 
-                    //Payment Methods
-                    MBillingPaymentSection(),
-                    SizedBox(height: MSizes.spaceBtwItems),
+                    // // Payment Methods
+                    // MBillingPaymentSection(),
+                    // SizedBox(height: MSizes.spaceBtwItems),
 
                     //Address
-                    MBillingAddressSection(),
-                    SizedBox(height: MSizes.spaceBtwItems),
+                    // MBillingAddressSection(),
+                    // SizedBox(height: MSizes.spaceBtwItems),
                   ],
                 ),
               )
@@ -87,9 +99,9 @@ class CheckoutScreen extends StatelessWidget {
               //   onPressed: () => Get.offAll(() => const NavigationMenu()),
               // )), 
               onPressed: subTotal > 0 
-                 ? () => orderController.processOrder(totalAmount)
+                 ? () => orderController.processOrder(subTotal)
                  : () => MLoaders.warningSnackBar(title: 'Empty Cart', message:'Add items in the cart in order to procees.'),
-              child: Text('Check out ${MTexts.currency} $totalAmount')
+              child: Text('Check out ${MTexts.currency} $subTotal')
             ),
       ),
     );

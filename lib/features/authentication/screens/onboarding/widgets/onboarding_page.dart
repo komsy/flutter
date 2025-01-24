@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:k_store/utils/constants/sizes.dart';
-import 'package:k_store/utils/helpers/helper_functions.dart';
+import 'package:multiapp/utils/constants/sizes.dart';
+import 'package:multiapp/utils/helpers/helper_functions.dart';
 
 class OnBoardingPage extends StatelessWidget {
   const OnBoardingPage({
@@ -17,7 +17,7 @@ final String image,title,subTitle;
         children: [
           Image(
           width: THelperFunctions.screenWidth() * 0.8,
-          height: THelperFunctions.screenWidth() * 0.6,
+          height: THelperFunctions.screenHeight() * 0.6,
           image:  AssetImage(image)
           ),
           Text(title,

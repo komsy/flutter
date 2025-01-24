@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:k_store/common/widgets/containers/rounded_container.dart';
-import 'package:k_store/common/widgets/loaders/animation_loader.dart';
-import 'package:k_store/features/shop/controllers/products/order_controller.dart';
-import 'package:k_store/navigation_menu.dart';
-import 'package:k_store/utils/constants/colors.dart';
-import 'package:k_store/utils/constants/image_strings.dart';
-import 'package:k_store/utils/constants/sizes.dart';
-import 'package:k_store/utils/helpers/cloud_helper_functions.dart';
-import 'package:k_store/utils/helpers/helper_functions.dart';
+import 'package:multiapp/common/widgets/containers/rounded_container.dart';
+import 'package:multiapp/common/widgets/loaders/animation_loader.dart';
+import 'package:multiapp/features/shop/controllers/products/order_controller.dart';
+import 'package:multiapp/features/shop/screens/order/widgets/order_items.dart';
+import 'package:multiapp/navigation_menu.dart';
+import 'package:multiapp/utils/constants/colors.dart';
+import 'package:multiapp/utils/constants/image_strings.dart';
+import 'package:multiapp/utils/constants/sizes.dart';
+import 'package:multiapp/utils/helpers/cloud_helper_functions.dart';
+import 'package:multiapp/utils/helpers/helper_functions.dart';
 
 class MOrderListItems extends StatelessWidget {
   const MOrderListItems({super.key});
@@ -20,11 +21,11 @@ class MOrderListItems extends StatelessWidget {
     final controller = Get.put(OrderController());
 
     return FutureBuilder(
-      future: controller.fetchUserOrders(),
+      future: controller.fetchOrders(),
       builder: (_, snapshot) {
         //Nothing found widget
         final emptyWidget = MAnimationLoaderWidget(
-          text: 'Whoops! No Ordder Yet.',
+          text: 'Whoops! No Order Yet.',
           animation: MImages.pencilAnimation,
           showAction: true,
           actionText: 'Let\'s fill it',
@@ -62,7 +63,7 @@ class MOrderListItems extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(order.orderStatusText, 
+                            Text("${order.companyName}  -  ${order.orderStatusText}", 
                             overflow: TextOverflow.ellipsis,
                             style: Theme.of(context).textTheme.bodyLarge!.apply(color: MColors.primary, fontWeightDelta: 1)),
                             Text(order.formattedOrderDate, style: Theme.of(context).textTheme.headlineSmall),
@@ -71,7 +72,7 @@ class MOrderListItems extends StatelessWidget {
                       ),
             
                       //Icon
-                      IconButton(onPressed: () {}, icon: const Icon(Iconsax.arrow_right_34, size: MSizes.iconSm))
+                      IconButton(onPressed: () => Get.to(() => MOrderItems(order :order)), icon: const Icon(Iconsax.arrow_right_34, size: MSizes.iconSm))
                     ],
                   ),
                   const SizedBox(height: MSizes.spaceBtwItems),
@@ -90,7 +91,7 @@ class MOrderListItems extends StatelessWidget {
                                 mainAxisSize: MainAxisSize.min,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('Order', style: Theme.of(context).textTheme.labelMedium),
+                                  // Text('Order  (${order.defaultPricing})', style: Theme.of(context).textTheme.labelMedium),
                                   Text(order.id, style: Theme.of(context).textTheme.titleMedium),
                                 ],
                               ),
@@ -103,7 +104,7 @@ class MOrderListItems extends StatelessWidget {
                         child: Row(
                           children: [
                             //Icon
-                            const Icon(Iconsax.calendar),
+                            const Icon(Iconsax.money),
                             const SizedBox(width: MSizes.spaceBtwItems /2),
             
                             Expanded(
@@ -111,8 +112,8 @@ class MOrderListItems extends StatelessWidget {
                                 mainAxisSize: MainAxisSize.min,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('Shipping date', style: Theme.of(context).textTheme.labelMedium),
-                                  Text(order.formattedDeliveryDate, style: Theme.of(context).textTheme.titleMedium),
+                                  Text('INV Amount', style: Theme.of(context).textTheme.labelMedium),
+                                  Text(order.totalAmount.toString(), style: Theme.of(context).textTheme.titleMedium),
                                 ],
                               ),
                             ),

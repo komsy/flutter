@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:k_store/utils/constants/sizes.dart';
-import 'package:k_store/utils/helpers/helper_functions.dart';
+import 'package:multiapp/utils/constants/sizes.dart';
+import 'package:multiapp/utils/helpers/helper_functions.dart';
 
 import '../../../../../common/widgets/icons/m_circular_icon.dart';
 import '../../../../../utils/constants/colors.dart';

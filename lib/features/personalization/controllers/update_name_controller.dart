@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:k_store/data/repositories/user/user_repository.dart';
-import 'package:k_store/features/personalization/controllers/user_controllers.dart';
-import 'package:k_store/features/personalization/views/profile/profile.dart';
-import 'package:k_store/utils/popups/loaders.dart';
+import 'package:multiapp/features/personalization/controllers/user_controller.dart';
+import 'package:multiapp/features/personalization/views/profile/profile.dart';
+import 'package:multiapp/utils/popups/loaders.dart';
 
 import '../../../utils/constants/image_strings.dart';
 import '../../../utils/helpers/network_manager.dart';
@@ -13,10 +12,9 @@ class UpdateNameController extends GetxController{
   static UpdateNameController get instance => Get.find();
 
     //Variables
-  final firstName= TextEditingController();
-  final lastName= TextEditingController();
+  final userName= TextEditingController();
+  final email= TextEditingController();
   final userController = UserController.instance; //create instance of the user controller
-  final userRepository = Get.put(UserRepository());
   GlobalKey<FormState> updateUserNameFormKey = GlobalKey<FormState>();  //Form key for form validation
   
 
@@ -29,8 +27,8 @@ class UpdateNameController extends GetxController{
 
   //Fetch user record and show on the fields
   Future <void> initializeNames() async {
-    firstName.text = userController.user.value.firstName;
-    lastName.text = userController.user.value.lastName;
+    userName.text = userController.user.value.userName;
+    email.text = userController.user.value.email;
   }
 
   Future<void> updateUserName() async {
@@ -39,11 +37,11 @@ class UpdateNameController extends GetxController{
       MFullScreenLoader.openLoadingDialog('We are updating your information...', MImages.docerAnimation);
 
       //Check Internet connectivity
-      final isConnected = await NetworkManager.instance.isConnected();
-      if (!isConnected){
-        MFullScreenLoader.stopLoading();
-        return;
-      }
+      // final isConnected = await NetworkManager.instance.isConnected();
+      // if (!isConnected){
+      //   MFullScreenLoader.stopLoading();
+      //   return;
+      // }
 
       //Form validation
       if(!updateUserNameFormKey.currentState!.validate()){
@@ -51,13 +49,12 @@ class UpdateNameController extends GetxController{
         return;
       }
       
-      //Update user's first & last name in the firebase firestore
-      Map<String, dynamic> name = {'Firstname': firstName.text.trim(),'Lastname': lastName.text.trim()};
-      await userRepository.updateSingleField(name);
-
+      //Update user's first & last name in the sqlite firestore
+      Map<String, dynamic> name = {'Firstname': userName.text.trim(),'Lastname': email.text.trim()};
+     
       //Update the Rx user value
-      userController.user.value.firstName = firstName.text.trim();
-      userController.user.value.lastName = lastName.text.trim();
+      userController.user.value.userName = userName.text.trim();
+      userController.user.value.email = email.text.trim();
 
       //Remove loader
       MFullScreenLoader.stopLoading();

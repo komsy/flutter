@@ -4,7 +4,7 @@ import '../../../../utils/constants/sizes.dart';
 
 class MGridLayout extends StatelessWidget {
   const MGridLayout({
-    super.key, required this.itemCount, this.mainAxisExtent = 288, required this.itemBuilder,
+    super.key, required this.itemCount, this.mainAxisExtent = 190, required this.itemBuilder,
   });
 
   final int itemCount;
@@ -19,10 +19,10 @@ class MGridLayout extends StatelessWidget {
       padding: EdgeInsets.zero,
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
+        crossAxisCount: 3,
         mainAxisExtent: mainAxisExtent,
-        mainAxisSpacing: MSizes.gridViewSpacing,
-        crossAxisSpacing: MSizes.gridViewSpacing,
+        mainAxisSpacing: MSizes.gridViewSpacing/2,
+        crossAxisSpacing: MSizes.gridViewSpacing/2,
         ),
         itemBuilder: itemBuilder,
       );
