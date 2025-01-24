@@ -102,7 +102,7 @@ class MValidator {
 
     // Check for minimum App Key length
     if (value.length < 5) {
-      return 'App Key must be at least5 characters long.';
+      return 'App Key must be at least 6 characters long.';
     }
     return null;
   }
